@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    请输入用户的成绩
+    <input type="text" id="ipt">
+    <button id="btn">按钮</button>
+    <br>
+    成绩是：<p id="con"></p>
+    <script>
+        /*     switch语句
+                switch（表达式）｛case value1：语句1；break; case value2：语句2；break; ………… default：语句 }
+                switch都是进行的全等===判断
+                每条case语句建议书写break,否则将一直执行其他case的语句，直到碰到break为止
+   */
+        /* 
+            在输入框中输入学员成绩，得到对应的等级
+            90-100 S
+            80-89 A
+            70-79 B
+            60-69 C
+            不及格 Z
+        */
+        var iptNode = document.getElementById("ipt");
+        var btnNode = document.getElementById("btn");
+        var conNode = document.getElementById("con");
+
+        //绑定事件
+        btnNode.onclick = function () {
+            //获取用户输入的值，并转number类型
+            var userScore = +iptNode.value;
+            //判断用户输入的成绩是否在0-100之间 不在则直接提示重新输入
+            if (!(userScore >= 0 && userScore <= 100)) {
+                //输入非法
+                alert("重新输入")
+                //清空表单
+                iptNode.value = "";
+
+                //return语句是直接退出当前函数,不再继续执行当前函数
+                return;
+            }
+
+            //判断用户输入的成绩在那个分层
+            switch (parseInt(userScore / 10)) {
+                case 10:
+                case 9:
+                    conNode.textContent = "S";
+                    break;
+                case 8:
+                    conNode.textContent = "A";
+                    break;
+                case 7:
+                    conNode.textContent = "B";
+                    break;
+                case 6:
+                    conNode.textContent = "C";
+                    break;
+                default:
+                    conNode.textContent = "Z";
+            }
+
+        }
+    </script>
+</body>
+
+</html>

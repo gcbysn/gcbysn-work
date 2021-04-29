@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            基本包装类型：
+                string number boolean
+        */
+       var str='abcd';
+       var str2=str.toLocaleUpperCase();//将字符串转换成大写
+       console.log(str2);
+
+       //内部包装的过程
+       //1.创建string类型的一个实例
+       var str3=new String("abcd");
+       //在包装的实例上调用了该方法
+       var str2=str3.toLocaleUpperCase();
+       //销毁这个实例
+       str3=null;
+
+       //为什么不能给基本类型添加属性和方法
+       var str4="123";
+       str4.hello="world";
+
+       var str5=new String("123");
+       //把对象设置给了包装对象上
+       str5.hello="world";
+       //设置完成后 包装对象还被删除了
+       str=null;
+
+    </script>
+</body>
+</html>

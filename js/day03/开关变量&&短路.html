@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <input type="button" id="btn">点击
+    <script>
+        /* 
+            点击变红色再次点击变绿色
+        */
+        var boxNode = document.getElementById("box");
+        var btnNode = document.getElementById("btn");
+        var flag = false;
+        btnNode.onclick = function () {
+            if (!flag) {
+                boxNode.style.backgroundColor = 'red';
+            } else {
+                boxNode.style.backgroundColor = 'green';
+            }
+            flag = !flag;
+        }
+
+        var a = 2;
+        var b = 3;
+        (a < b) && (a = 5);
+        //true       5
+        ////A&&B A为true，返回B
+        console.log(a); //5
+
+        var a = 6;
+        var b = 3;
+        (a < b) && (a = 5);
+        //false
+        //A&&B A为false，返回A,不再执行B
+        console.log(a); //6
+
+        var a = 2;
+        var b = 3;
+        (a < b) || (a = 5);
+        //true
+        ////A||B  A为false 返回A,不再执行B
+        console.log(a); //2
+
+        var a = 6;
+        var b = 3;
+        (a < b) || (a = 5);
+        //false      5
+        //A||B  A为false 返回B
+        console.log(a); //5
+    </script>
+</body>
+
+</html>

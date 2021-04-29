@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            函数
+                有两重身份
+                    作为代码的封装体 可以调用
+                    函数函数还是一个对象
+
+        
+        */
+       
+        function fn() {
+            console.log(1 + 1);
+        }
+
+        //1.函数作为封装体 可以调用
+        fn();
+
+        //2.函数作为对象,和函数自身的调用没有关系
+        fn.a = 1;
+        fn.do = function () {
+            console.log("hello")
+        }
+        console.log(fn.a)
+        fn.do();
+
+
+
+
+
+
+        //块作用域声明函数
+        /* var a = 1;
+        let b = 2;
+        fn2();
+        if (a === 1) {
+            //直接在块级作用域中用function声明函数 不合规范 有很多兼容性问题
+            function fn2() {
+                console.log(1);
+            }
+            //如果一定非要在块作用域中声明函数，那么请使用函数表达式的方法
+            var fn2 = function () {
+
+            }
+        }
+        fn2(); */
+    </script>
+</body>
+</html>

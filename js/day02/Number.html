@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            Number类型有哪几种
+                1.十进制整数
+                2.浮点数
+                3.八进制（0o开头）
+                4.十六进制（0x开头）
+                5.Infinity(无穷大)-Infinity(无穷 小)
+                6.NaN（not a number）代表这个值无法用应该数值表示
+                7.科学计数法
+                8.Number.MIN_VALUE最小数Number.MAX_VALUE最大数
+
+        
+        */
+            //整数
+            var a=1;
+            console.log(typeof a);
+            //浮点数
+            var b=3.1415926
+            console.log(typeof b);
+            //八进制
+            var c=0o77;
+            console.log(c,typeof c);
+            //十六进制
+            var d=0xff;
+            console.log(d, typeof d);
+            //最大数
+            var e=3/0;
+            console.log(e,typeof e);
+            //NaN
+            var f=9/"a";
+            console.log(f,typeof f);
+            //科学计数法
+            var g=2.14E10;
+            console.log(g,typeof g);
+            //最大数，最小数
+            console.log(Number.MIN_VALUE);
+            console.log(Number.MAX_VALUE);
+
+    </script>
+</body>
+</html>

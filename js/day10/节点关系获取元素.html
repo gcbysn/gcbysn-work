@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul id="app">
+        <li></li>
+        <li></li>
+        <li></li>
+        <!-- <li></li> -->
+    </ul>
+    <script>
+        /* 
+            1.children 获取一个元素的所有子元素节点
+                IE8可以获取到注释节点(避免 要么不用 要么别再写注释)
+        
+            2.parentNode 父元素节点
+
+             
+            3.firstChild 在IE8中获取的是第一个子元素节点，在现代浏览器中获取的是第一个子节点
+              firstElementChild:在IE8中没有这个属性，在现代浏览器中获取的是第一个子元素节点
+
+            4.lastChild 
+              lastElementChild
+        
+
+        */
+
+        var appNode = document.getElementById("app");
+
+
+        //兼容性写法
+        if (appNode.firstElementChild) {
+            console.log(appNode.firstElementChild)
+        } else {
+            console.log(appNode.firstChild)
+        }
+
+        // 封装兼容性写法
+        function getFirChild(Ele) {
+            return Ele.firstElementChild || Ele.firstChild;
+        }
+
+        var re = getFirChild(appNode);
+        console.log(re);
+        //封装获取最后一个子元素节点
+        function getLastChild(Ele) {
+            return Ele.lastElementChild || Ele.lastChild;
+        }
+        //封装获取上一个兄弟元素
+        function getPrevEle(Ele) {
+            return Ele.previousElementSibling || Ele.previousSibling;
+        }
+        //封装获取下一个兄弟元素
+        function getNextEle(Ele) {
+            return Ele.nextElementSibling || Ele.nextSibling;
+        }
+    </script>
+</body>
+
+</html>

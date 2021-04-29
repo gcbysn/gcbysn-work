@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="ipt">
+    <button id="btn">判断</button>
+    <script>
+        /* 
+            isNaN方法：
+                判断一个值 是否是NaN 如果是则返回true  如果不是则返回false
+                无论传入的是什么类型，都会被先转为number类型，然后进行判断
+        
+        */
+        var a = NaN;
+        var b = 'a1234';
+        console.log(isNaN(a));
+        console.log(isNaN(b)); //true
+
+
+        // 获取输入框标签
+        var oIpt = document.getElementById("ipt");
+        //获取按钮标签
+        var oBtn = document.getElementById("btn");
+
+        //给按钮标签绑定点击事件
+        oBtn.onclick = function () {
+            //获取输入框的内容赋值给一个变量
+            var userCon = oIpt.value; 
+
+            //判断输入内容是否为数字，isNaN会自动的转换为number
+            if (isNaN(userCon)) {
+                //如果输入的内容不是纯数字，则转换number的时候会转换为NaN
+                alert("请重新输入 包含了非数字字符");
+                //清空输入框 
+                oIpt.value = "";
+            } else {
+                alert("欢迎登录")
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    单价<input type="text" id="price">数量<input type="text" id="num"><button id="btn">确认</button>
+    <p>一共<span id="money"></span>元</p>
+    请输入你的金额<input type="text" id="allPrice"><button id="btn_2">确认</button>
+    <p>你的找零<span id="meney_2"></span>元</p>
+    <script>
+            //输入单价和数量，计算总价。如果总价大于600 则打9折。然后用户输入付钱，最终弹出找零。
+
+            //获取元素
+            var priceNode=document.getElementById("price");
+            var numNode=document.getElementById("num");
+            var btnNode=document.getElementById("btn");
+            var moneyNode=document.getElementById("money");
+            var allPriceNode=document.getElementById("allPrice");
+            var btn_2Node=document.getElementById("btn_2");
+            var meney_2Node=document.getElementById("meney_2");
+            var price=null;
+            //绑定事件
+            btnNode.onclick=function(){
+                //计算一共需要多少金额
+                price=+(priceNode.value)*+(numNode.value);
+                //将得到金额显示在指定元素
+                moneyNode.textContent=price;
+            }
+            btn_2Node.onclick=function(){
+                //金额大于600就打9折
+               if(price>600){
+                   price*=0.9;
+               }
+               //将得到金额显示在指定元素
+               meney_2Node.textContent=+(allPriceNode.value)-price;             
+            }
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // let t = setTimeout(() => {
+        //     console.log(1111)
+        //     let t1 = setTimeout(() => {
+        //         console.log(2222)
+        //         let t2 = setTimeout(() => {
+        //             console.log(3333)
+        //         }, 3000)
+        //     }, 2000)
+        // }, 1000)
+
+        //第一种写法  
+     /*    const fnasync = function (value, time) {
+            return new Promise(function (resolve, reject) {
+                setTimeout(() => {
+                    console.log(value);
+                    resolve();
+                }, time);
+            })
+        }
+        fnasync(1111, 1000).then(
+            () => {
+                return fnasync(2222, 2000)
+            }
+        ).then(
+            () => {
+                return fnasync(3333, 3000)
+            }
+        ).catch(err => {
+            console.log(err);
+        })
+ */
+        //第二种写法  使用async
+        let asycnfn = function (num, time) {
+            return new Promise(
+                (resolve, reject) => {
+                    setTimeout(() => {
+                        console.log(num);
+                        resolve();
+                    }, time);
+                }
+            )
+        }
+        let fn=async function(){
+            await asycnfn(1111,1000)
+            await asycnfn(2222,1000)
+            await asycnfn(3333,1000)
+        }
+        fn()
+    </script>
+</body>
+
+</html>

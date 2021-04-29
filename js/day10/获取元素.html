@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="box">
+        <li></li>
+        <li class="active"></li>
+        <li></li>
+        <li class="active"></li>
+        <li></li>
+    </ul>
+    <script>
+        /* 
+            获取元素节点
+                通过id获取
+                    document.getElementById("id名")
+                    返回当前的元素节点
+                通过标签名获取
+                    document.getElementsByTagName("标签名")
+                    返回的是一个集合，是一个数组
+                通过类名获取
+                    document.getElementsByClassName("类名")
+                    返回的是一个集合，是一个类数组
+
+        */
+        //通过id获取 全兼容
+        var boxNode=document.getElementById("box");
+        console.log(boxNode);
+        //通过标签名获取 全兼容
+        var ulNode=document.getElementsByTagName("ul");
+        console.log(ulNode[0])
+        //通过类名获取 (IE9及以上兼容)
+        var activeNodes=document.getElementsByClassName("active")
+        console.log(activeNodes)
+
+        /* 
+            selcectors API
+                document.querySelector 
+                    获取选择器选择元素的第一个
+                document.querySelectorAll
+                    获取选择器选择的所有元素，类数组
+        */
+        var box=document.querySelector("#box");
+        var lis=document.querySelectorAll("#box li")
+    </script>
+</body>
+</html>

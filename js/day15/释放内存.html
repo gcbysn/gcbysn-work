@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var obj = {
+
+        }
+
+
+        obj = null
+
+        /* 
+            刚打开页面的时候 创建了一个全局变量obj 保存了一个对象
+            obj创建以后，如果我们不主动释放，则页面关闭的时候才会变成垃圾数据
+            但是如果不主动释放，可能会造成内存泄漏。
+            主动释放：当obj不再使用的时候，把这个obj对象不再被任何变量引用（切断了一切使用它的可能），它就变成了垃圾对象  将obj = null 即可
+
+
+            内存泄漏：
+                内存泄漏（Memory Leak）是指程序中已动态分配的堆内存由于某种原因程序未释放或无法释放，造成系统内存的浪费，导致程序运行速度减慢甚至系统崩溃等严重后果。
+        
+        */
+
+
+        function fn() {
+            var obj2 = {}
+        }
+        fn();
+        /* 
+            函数内部数据：
+                fn函数本身是一个全局变量，它已经占用了堆的空间。
+                fn = null;把函数占用的空间给释放了
+
+                当函数调用的时候，函数内部的数据就会被创建，并占用空间
+                释放：
+                    函数内部的使用一般不用我们主动释放，因为当函数执行完毕以后，内部数据会自动销毁
+        
+        
+        */
+    </script>
+</body>
+
+</html>

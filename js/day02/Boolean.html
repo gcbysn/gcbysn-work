@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="ipt">
+    <button type="button" id="btn">判断</button>
+    <script>
+        //获取input输入标签
+        var iptNode = document.getElementById("ipt");
+        //获取button按钮
+        var btnNode = document.getElementById("btn");
+        //给按钮绑定事件
+        btnNode.onclick = function() {
+            //判断输入是否为空
+            if(iptNode.value){
+                //不为空弹出输入框内容
+                alert(iptNode.value);
+            }else{
+                //为空输入框边框变红
+                iptNode.style.borderColor="red";
+
+            }
+
+        }
+    </script>
+</body>
+
+</html>

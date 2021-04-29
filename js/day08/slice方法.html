@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            slice方法
+                截取数组，对原数组没有影响，返回截取后的新数组
+                参数1：开始截取的下标 一般不为负数
+                参数2：结束位置（不包含）,结束位置为负数，则倒着数
+        */
+
+        var str1 = "[object Object]";
+        var str2 = "[object String]";
+        var str3 = "[object Null]";
+        var str4 = "[object Boolean]";
+        var str5 = "[object Undefined]";
+
+        console.log(str1.slice(8, -1))
+        console.log(str2.slice(8, -1))
+        console.log(str3.slice(8, -1))
+        console.log(str4.slice(8, -1))
+        console.log(str5.slice(8, -1))
+    </script>
+</body>
+</html>

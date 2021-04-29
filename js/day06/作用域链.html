@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            1.作用域链：保证对 当前执行环境有访问的所有变量和函数的有序访问
+            2.当函数声明的时候，就已经确定了作用域链，但是因为这个
+            函数没有被调用，所以函数内部的变量对象没有生成，作用域
+            链并没有完整
+            3.当函数执行的时候，创建了自己的变量对象，并推到了作用
+            域链的最前端，形成完整的作用域链
+            4.作用域链的最前端一定是自身的执行环境的变量对象，作用
+            域链的末端一定是全局的变量对象
+            5.标识符的解析是沿着作用域链一级一级寻找的过程，如果寻找
+            不到，则会报错
+        
+        
+        */
+
+
+
+        // var x = 10;
+        // function fn() {
+        //     console.log(x);//10
+        // }
+
+        // function show(f) {
+        //     var x = 20;
+        //     f();
+        // }
+        // show(fn);
+
+
+        // var fn = function () {
+        //     console.log(fn)//function(){}
+        // }
+        // fn() 
+
+        // var obj = {
+        //     fn2: function () {
+        //         console.log(fn2)
+        //     }
+        // }
+        // obj.fn2()
+
+        var scope = "global scope";
+
+        function checkscope() {
+            var scope = "local scope";
+
+            function f() {
+                return scope; //scope找的是函数内部的local scope
+            }
+            return f();//f()相当于local scope
+        }
+        console.log(checkscope());//local scope
+        /* 
+            先执行checkscope()函数，
+            function f(){}返回的是local scope    
+        */
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>      
+        // 求1-n之间所有数的和
+        function sun(max) {
+            var num = 0;
+            if (!isNaN(max)) {
+                for (var i = 1; i <= max; i++) {
+                    num += i;
+                }
+                return num;
+            } else {
+                alert("你输入的是非法数字")
+            }
+        }
+        console.log(sun(5));
+
+        //   求n-m之间所有数的和
+        function sun1(min, max) {
+            var num = 0;
+            if (!isNaN(max) && !isNaN(min)) {
+                if (max < min) {
+                    max = min - max;
+                    min = min - max;
+                    max = min + max;
+                }
+                for (var i = min; i <= max; i++) {
+                    num += i;
+                }
+                return num;
+            } else {
+                alert("你输入的是非法数字")
+            }
+        }
+        console.log(sun1(5, 3));
+
+        //   圆的面积
+        function s(r) {
+            // r=r.toString();
+            if (!isNaN(r)) {
+                var s = Math.PI * r * r;
+                s = s.toFixed(2);
+                return s;
+            } else {
+                alert("你输入的是非法数字")
+            }
+        }      
+        console.log(s(1))
+
+        // 求2个数中的最大值
+        function max(a, b) {
+            if (!isNaN(a) && !isNaN(b)) {
+                if (a > b) {
+                    return a;
+                }
+                return b;
+            } else {
+                alert("你输入的是非法数字")
+            }
+        }
+        console.log(max(3, 6))
+
+        // 求3个数中的最大值
+        function sMax(a, b, c) {
+            return Math.max(a, b, c);
+        }
+        console.log(sMax(3, 6, 4));
+
+        // 判断一个数是否是素数(又叫质数，只能被1和自身整数的数)        
+        function isSu(num) {
+            var count = 0; //统计因子个数
+            for (var i = 1; i <= num; i++) {
+                if (num % i == 0) { //因子
+                    count++;
+                }
+            }
+            //循环结束后 如果 count == 2  一定是素数
+            if (count == 2) {
+               console.log(num + "是素数");
+            } else {
+                console.log(num + "不是素数");
+            }
+        }
+        isSu(4)
+        //求任意个数的最大值
+        function rMax(){
+            var max=0;
+            for(var i=0;i<arguments.length;i++){
+               if(arguments[i]>max){
+                   max=arguments[i];
+               }
+            }
+            return max;
+        }
+        console.log(rMax(2,3,6,7,8,0))
+
+        // 求任意个数的和
+        function rSun(){
+            var sun=0;
+            for(var i=0;i<arguments.length;i++){
+               sun = arguments[i]+sun;
+            }
+            return sun;
+        }
+        console.log(rSun(2,3,6,7,8,0))
+
+       
+    </script>
+</body>
+
+</html>

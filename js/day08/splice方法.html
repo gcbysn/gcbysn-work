@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            splice方法：
+                参数1:开始删除元素的下标，如果是负数，则倒着查找
+                参数2：删除元素的长度，长度为负数 默认为0
+                参数3：在删除的位置添加的元素，可以是多个
+
+            作用：
+                删除：参数1和参数2
+                添加：参数1是添加的下标，参数长度要设置为0，添加的新元素
+                替换：参数1是添加的下标，参数2要被替换的长度，参数3是添加的新元素
+        */
+        
+        var arr=[1,2,3,4,,5,6];
+        var re=arr.splice(-1,3,"a")
+        console.log(arr);
+        console.log(re);
+    </script>
+</body>
+</html>

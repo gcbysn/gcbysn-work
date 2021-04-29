@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            slice:字符串截取
+                参数1:开始位置
+                参数2：结束位置(不包含) 可以为负数 如果忽略该参数，则默认到末尾
+
+            substr:根据长度来截取字符串
+                参数1：开始的位置
+                参数2：截取长度 如果忽略该参数，则默认到末尾
+                ECMA不推荐使用
+            
+            substring：字符串截取
+                参数1：开始位置
+                参数2：结束位置(不包含) 可以为负数 如果忽略该参数，则默认到末尾
+        */
+
+        var str="hidsnvssni";
+        var re=str.slice(3);
+        console.log(re);
+
+        var re2=str.substr(2);
+        console.log(re2);
+
+        var re3=str.substring(5)
+        console.log(re3)
+    </script>
+</body>
+</html>

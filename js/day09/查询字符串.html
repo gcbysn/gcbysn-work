@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+                查询字符串：
+                    charAt(n):查询下标为n的字符
+                        可以使用字符串给中括号下标的方式替换
+                    indexOf:查询某串字符第一次出现在字符串中的位置，如果没有则返回-1
+                    lastIndexOf:倒序查询 但是下标仍然是从左往右
+
+                    search和indexOf类似，只不过search查询条件可以是一个正则表达式
+
+                    math:匹配，一般和正则同时使用，匹配符合条件的字符，组成一个数组
+
+        */
+
+        var str1='abcdefghjkl213432';
+        var re=str1[2];
+        console.log(re);
+
+        var re=str1.indexOf("bcd",3);
+        console.log(re);
+
+        var reg=/[0-9]/gi;
+        var re2=str1.search(reg);
+        console.log(re2);
+    </script>
+</body>
+</html>

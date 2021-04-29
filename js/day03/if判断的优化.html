@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //有一个变量a和变量b，如果a大于1，则b为2，否则b为0
+
+        //第一种if写法
+        var a = 3,
+            b=5;
+        if (a > 1) {
+            b = 2;
+        } else {
+            b = 0;
+        }
+        console.log(b);
+
+        //第二种三元写法
+        a > 1 ? b = 2 : b = 0;
+        console.log(b);
+
+        //第三种三元写法
+        b = a > 1 ? 2 : 0;
+        console.log(b);
+
+        //第四种 与或非写法 短路原理
+        a > 1 || (b = 0);
+        a > 1 && (b = 2);
+        console.log(b);
+
+        //第五种 与或非写法 短路原理
+        a > 1 && (b = 2) || (b = 0)
+        console.log(b);
+    </script>
+</body>
+
+</html>

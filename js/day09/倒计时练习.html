@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="con"></div>
+    <script>
+        var oCon = document.getElementById('con')
+        var duanWu = new Date("2021-6-14 8:00:00");
+        setInterval(function () {
+            //每次都要获取最新的时间 
+            var now = Date.now();
+            //计算时间戳的差值
+            var allTime = duanWu - now;
+            // console.log(allTime);
+
+            //想要知道时间戳是多少天，我们就要知道一天是多少毫秒
+            var day = Math.floor(allTime / (1000 * 60 * 60 * 24));
+            console.log(day);
+            //把总时间戳除一天的毫秒数，取余，得到不满一天的毫秒数，然后计算小时
+            var _day = allTime % (1000 * 60 * 60 * 24);
+
+
+            //拿到不满一天的毫秒数 就可以计算剩余小时
+            var hours = Math.floor(_day / (1000 * 60 * 60));
+            var _hours = _day % (1000 * 60 * 60)
+
+
+            var minutes = Math.floor(_hours / (1000 * 60))
+            var _minutes = _hours % (1000 * 60);
+
+            var seconeds = Math.floor(_minutes / 1000);
+            //不满10 添个0
+            seconeds = seconeds < 10 ? "0" + seconeds : seconeds;
+
+            var milliSeconeds = _minutes % 1000;
+
+            oCon.textContent = "距离端午节还剩" + day + "天" + hours + "小时" + minutes + "分" + seconeds + "秒" +
+                milliSeconeds + "毫秒";
+        }, 1)
+    </script>
+</body>
+
+</html>

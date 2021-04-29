@@ -1,0 +1,39 @@
+body{
+    margin: 0;
+}
+#defer{
+    position: relative;
+    height: 30px;
+    border:1px solid black;
+    text-align: center;
+    line-height: 30px;
+}
+.html{
+    width: 60%;
+    float: left;
+    box-sizing: border-box;
+    border:1px solid black;
+}
+.html2{
+    width: 20%;
+    float: right;
+    box-sizing: border-box;
+    border:1px solid black;
+}
+.js{
+    width: 30%;
+    position: absolute;
+    top:30px;
+    left:30%;
+    border:1px solid black;
+}
+.execution{
+    position: absolute;
+    top:30px;
+    left:60%;
+    width: 20%;
+    box-sizing: border-box;
+    border:1px solid black;
+}
+
+

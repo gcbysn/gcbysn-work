@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: slateblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+
+    </div>
+    <script>
+        /* 
+            滚轮事件
+                ie/谷歌
+                    onmousewheel
+                        上滚 wheelDelta 120
+                        下滚 wheelDelta -120
+                火狐
+                    DOMMouseScroll
+                        上滚 detail -3
+                        下滚 detail 3
+
+        */
+
+
+        var divNode = document.querySelector('.box');
+        // divNode.onmousewheel = function (e) {
+        //     console.log(e)
+        //     if (e.wheelDelta > 0) {
+        //         console.log('上')
+        //         console.log(e.wheelDelta)
+        //     } else {
+        //         console.log('下')
+        //         console.log(e.wheelDelta)
+        //     }
+        // }
+        // divNode.addEventListener('DOMMouseScroll', function (e) {
+        //     // console.log(e)
+        //     if (e.detail < 0) {
+        //         console.log('上')
+        //     } else {
+        //         console.log('下')
+        //     }
+        // })
+        //兼容写法
+        function fn(e) {
+            if (e.wheelDelta) {
+                if (e.wheelDelta > 0) {
+                    console.log('上')
+                    console.log(e.wheelDelta)
+                } else {
+                    console.log('下')
+                    console.log(e.wheelDelta)
+                }
+            } else {
+                if (e.detail < 0) {
+                    console.log('上')
+                } else {
+                    console.log('下')
+                }
+            }
+
+        }
+        divNode.onmousewheel=fn;
+        divNode.addEventListener('DOMMouseScroll',fn)
+    </script>
+</body>
+
+</html>

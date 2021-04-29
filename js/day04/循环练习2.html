@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //计算1-9的和
+        var i=0;
+        var num=0;
+        while(i<=9){
+            num+=i;
+            i++;
+        }
+        console.log(num)
+        //计算1-100的和
+        var i=0;
+        var num=0;
+        while(i<=100){
+            num+=i;
+            i++;
+        }
+        console.log(num)
+        //计算1-99的奇数和
+        var i=0;
+        var num=0;
+        while(i<=99){
+            if(i%2!=0){
+                num+=i;
+            }
+            i++;
+        }
+        console.log(num)
+        //计算1-99被3整除的和
+        var i=0;
+        var num=0;
+        while(i<=99){
+            if(i%3==0){
+                num+=i;
+            }
+            i++;
+        }
+        console.log(num)
+
+        var v=4;
+       if(v===0){
+           var i=0;
+            while(i<3){
+                v++;
+                i++;
+            }
+            console.log(v);
+       }else{
+        var i=0;
+            while(i<4){
+                v+=2;;
+                i++;
+            }
+            console.log(v);
+       }
+
+
+       var v=3;
+       var i=0;
+       while(i<3){
+           if(i===2){
+               v+=2;
+           }else{
+               v+=3;
+           }
+            i++;
+       }
+       console.log(v);
+    </script>
+</body>
+</html>

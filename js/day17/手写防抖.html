@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="ipt">
+    <script>
+        /* 
+            防抖：
+                代码在一段事件内之执行最后一次
+        */
+       var iptNode= document.getElementById('ipt');
+
+       /* 提炼核心代码 */
+       function core(e){
+           console.log('核心代码');
+           console.log(this);
+           console.log(e);
+       }
+
+       iptNode.oninput=debounce(core,1000);
+
+       /* 防抖函数 */
+       function debounce(fn,time){
+           //在父作用域中设置timer，保证每一次设置的计时器都是同一个
+           var timer=null;
+           return function(){
+               /* 
+                    每次事件发生时，可能上一次的核核心代码还没有执行完成
+                    但是我们需要开始重新计时，所以需要吧上一次的计时器清掉，
+                    然后重新在添加
+                    */
+
+                clearTimeout(timer);
+                //保存外面的this
+                var _this=this;
+                //获取参数
+                var arg=arguments[0];
+                //当事件触发以后，定义一个延迟计时器，让核心代码延迟执行
+                timer=setTimeout(function(){
+                    fn.call(_this,agr);
+                },timer)
+
+
+           }
+       }
+
+    </script>
+</body>
+</html>

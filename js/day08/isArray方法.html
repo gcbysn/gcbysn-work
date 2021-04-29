@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li class="item"></li>
+        <li class="item"></li>
+        <li class="item"></li>
+        <li class="item"></li>
+        <li class="item"></li>
+        <li class="item"></li>
+    </ul>
+    <script>
+        /* 
+            isArray是数组的静态方法，也就是使用 Array.isArray()来使用
+                检测一个指是不是数组，返回布尔值
+        */
+       var liNode=document.querySelectorAll("ul li");
+       var itemNode=document.getElementsByClassName("item");
+       var arr=[];
+       var arr={};
+       console.log(Array.isArray(arr));//false
+       console.log(Array.isArray(liNode));
+       console.log(Array.isArray(itemNode));
+
+    </script>
+</body>
+</html>

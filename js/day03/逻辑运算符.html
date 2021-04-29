@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            逻辑与 &&
+                一般用来 两个操作数进行逻辑与运算
+                A&&B
+
+                先执行A，如果A返回的是true，则继续执行B,返回B语句的返回值
+                如果A语句返回false，则直接把A语句的返回值返回出去
+
+        
+        */
+        console.log('-------------')
+        console.log(true && 1) //1
+        console.log(true && false) //false
+        console.log(true && true) //true
+        console.log(true && (1 + 2)) //3
+        console.log(true && (a = 3)) //3
+        console.log('-------------')
+        console.log(0 && true) //0
+        console.log(3 && true) //true
+        console.log(3 && 4) //4
+        console.log(a < 4 && true) //true
+        /* 
+            逻辑或 ||
+                一般用来 两个操作数进行逻辑或运算
+                A||B
+
+                先执行A，如果A返回的是true，则返回 A的返回值
+                如果A语句返回false，则继续执行B语句 并返回B语句的返回值
+
+        
+        */
+
+        console.log('-------------')
+        console.log(true || 1) //true
+        console.log(4 > 3 || true) //true
+        console.log('-------------')
+        console.log(3 || true) //3
+        console.log(3 || 0) //3
+        console.log(3 > 4 || false) //false
+        /* 
+            逻辑非: !
+                -!A
+                -逻辑非返回的就是布尔值，先把A转为布尔值，然后取反
+        
+        */
+        console.log(!0); //true
+        console.log(!1); //false
+        console.log(!"1"); //false
+    </script>
+</body>
+
+</html>

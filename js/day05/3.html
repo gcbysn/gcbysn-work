@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+
+       
+       function Foo(a) {
+            this.a = a;
+        }
+        var bar = new Foo(2);
+        console.log(bar.a);//2 */
+
+        var x = 1;
+        var obj = {
+            f: function () {
+                console.log(this.x);
+            },
+            x: 2,
+        }
+        (obj.f = obj.f)();
+        (false||obj.f)();
+        (obj.f,obj.f);
+        (obj.f);
+    </script>
+</body>
+
+</html>

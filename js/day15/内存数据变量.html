@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+            问题: var a = xxx, a内存中到底保存的是什么?
+        */
+        /* var a
+        a = 'abc' //a变量中保存的是基本类型值
+        a = function () { //a变量中保存的是地址值
+
+        }
+
+        var b = true //b变量中保存的是基本类型值
+        a = b //a变量中保存的是基本类型值
+        b = [] //把变量b的值改为了地址值
+        a = b //a变量中保存的是地址值 */
+
+
+
+
+        /* 
+            2个引用变量指向同一个对象, 通过一个引用变量修改对象内部数据, 另一个引用变量也看得见
+        
+        */
+        /* var o1 = {
+            m: 1
+        }
+        //赋值都是变量的值的赋值，把o1所代表的地址赋值给了o2
+        var o2 = o1;
+        //给o2扩展属性 其实是给o2地址所代表的对象扩展的属性
+        o2.m = 2;
+        console.log(o1.m, o1 === o2) //2 true */
+
+
+
+        /* 
+            2个引用变量指向同一个对象,让一个引用变量指向另一个对象, 另一个引用变量还是指向原来的对象
+        */
+
+        /* var o3 = {
+            m: 3
+        }
+        ////赋值都是变量的值的赋值，把o1所代表的地址赋值给了o2
+        var o4 = o3
+
+        //修改了o3的地址值，o4还是原来o3的值
+        o3 = {
+            m: 4
+        }
+        console.log(o4.m, o4 === o3) //3 false */
+
+
+
+
+        //test1
+        /* var o5 = {
+            m: 5
+        };
+        var o6 = o5;
+
+        //传参其实也是一个赋值操作  obj = o5
+        function fn(obj) {
+            //obj被重新赋值了，不会影响o5和o6
+            obj = {
+                m: 6
+            };
+        }
+        fn(o5)
+        console.log(o5.m, o6.m, o6 === o5) //5 5 true */
+
+
+        //test2
+        var o5 = {
+            m: 5
+        };
+        var o6 = o5;
+
+        function fn(obj) {
+            //o5  o6  obj 是同一个地址
+            obj.m = 6
+        }
+        fn(o5)
+        console.log(o5.m, o6.m, o6 === o5) //6 6 true 
+    </script>
+</body>
+
+</html>

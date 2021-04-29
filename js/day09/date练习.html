@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p id="cont"></p>
+    <script>
+        // 写一个函数，格式化日期对象，返回yyyy-MM-dd HHmmss的形式
+        var contNode = document.getElementById("cont");
+        day();
+        function day() {
+            var date = new Date();
+            var year = date.getFullYear();
+            var month = date.getMonth() + 1;
+            var day = date.getDate();
+            day = day < 10 ? "0" + day : day;
+            var hours = date.getHours();
+            hours = hours < 10 ? "0" + hours : hours;
+            var minutes = date.getMinutes();
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            var seconds = date.getSeconds();
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+            var str = year + "-" + month + "-" + day + "  " + hours + ":" + minutes + ":" + seconds;
+            // return str;
+            contNode.textContent=str;
+        }
+        setInterval(function () {
+            day();
+        }, 1000)
+    </script>
+</body>
+
+</html>

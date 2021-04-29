@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*   var v = "hello";
+        (function () {
+            alert(v);//undefined
+            var v = "world";
+        })();
+        alert(v);//hello */
+
+
+        /*   (function () {
+              alert(a + b + c);//NaN  因为： undefined+undefined+undefined=NaN
+              var a = "1";
+              var f = function () {};
+              var b = "2";
+              var c = "3";
+          })(); */
+        /* 
+                (function () {
+                    f2();//1
+                    f1();//报错
+                    var f1 = function () {
+                        alert(2)
+                    };
+
+                    function f2() {
+                        alert(1);
+                    }
+                })(); */
+
+        /*    var a = 1;
+
+           function outer() {
+               var b = 2;
+
+               function inner() {
+                   var c = 4;
+                   alert(a);//1
+               }
+               inner();
+           }
+           outer(); */
+        /*    var a = 1;
+
+           function check() {
+               a = 100;
+               alert(a);//100
+           }
+           check();
+           alert(a);//100 */
+
+
+
+        /*  var v = "hello";
+         if (true) {
+             alert(v); //hello   因为这是全局作用域下的v
+             var v = "world";
+         }
+         alert(v); //world */
+
+
+
+        // function rain() {
+        //     var x = 1;
+
+        //     function man() {
+        //         x = 100;
+        //     }
+        //     man();
+        //     alert(x);//100
+        // }
+        // rain();
+
+        /* 
+                var x = 1;
+
+                function rain() {
+                    alert(x);//undefined
+                    var x = 'man';
+                    alert(x);//man
+                }
+                rain() */
+
+
+
+
+
+        /*   var t = 'a';
+
+          function test2() {
+              alert(t);//undefined
+              var t = 'b';
+              alert(t);//b
+          }
+          test2(); */
+
+
+
+        /*   var t = 'a';
+
+          function test2() {
+              alert(t);//a
+              t = 'b';
+              alert(t);//b
+          }
+          alert(t);//a
+          test2();
+          alert(t);//b */
+
+
+        /*    var a = "Hello";
+
+           function test() {
+               alert(a);//hello
+               a = "World";
+               alert(a);//world
+           }
+           test(); */
+
+        /*    var a = 1;
+
+           function test() {
+               alert(a);//undefined
+               a = 4;
+               alert(a)//4
+               var a = 2;
+               alert(a);//2
+           }
+           test();
+           alert(a)//1 */
+
+       /*  var x = 1;
+        var obj = {
+            f: function () {
+                console.log(this.x)
+            },
+            x: 2
+        }
+        obj.f();//2
+        var f1 = obj.f;
+        f1();//1 */
+
+
+    /*       
+
+       当全局没有声明变量时， 函数内部也没有使用var声明变量，函数内部变量相当于是给全局变量
+
+        function rain() {
+            x = 100;
+        }
+        rain();
+        alert(x); //100 */
+    </script>
+</body>
+
+</html>

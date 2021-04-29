@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            top: 0;
+            left: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <script>
+        var boxNode = document.querySelector('.box');
+        boxNode.onmousedown = function (e) {
+
+            /* 
+                e.clientX 鼠标距离浏览器左边的距离
+                e.clientY 鼠标距离浏览器上边的距离
+
+                boxNode.offsetLeft div距离最近父级（文档）左边的距离
+                boxNode.offsetTop  div距离最近父级（文档）上边的距离
+            */
+            //按下时的距离
+            var downMove = {
+                left: e.clientX - boxNode.offsetLeft,
+                top: e.clientY - boxNode.offsetTop
+            }
+
+            document.onmousemove = function (e) {
+                //移动时的距离
+                var move = {
+                    left: e.clientX - downMove.left,
+                    top: e.clientY - downMove.top
+                }
+
+
+                /* 
+                    document.documentElement.clientWidth 文档的宽度
+                    document.documentElement.clientHeight 文档的高度
+                    boxNode.offsetWidth div带边框的宽度
+                    boxNode.offsetHeight div带边框的高度
+                */
+                if (move.left <= 0) {
+                    move.left = 0;
+                } else if (move.left >= document.documentElement.clientWidth - boxNode.offsetWidth) {
+                    move.left = document.documentElement.clientWidth - boxNode.offsetWidth;
+                }
+
+                if (move.top <= 0) {
+                    move.top = 0;
+                } else if (move.top >= document.documentElement.clientHeight - boxNode.offsetHeight) {
+                    move.top = document.documentElement.clientHeight - boxNode.offsetHeight;
+                }
+
+                boxNode.style.left = move.left + "px";
+                boxNode.style.top = move.top + "px";
+            }
+            document.onmouseup = function () {
+                document.onmousemove = null;
+                document.onmouseup = null;
+            }
+        }
+    </script>
+</body>
+
+</html>

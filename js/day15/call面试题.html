@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function fn1(){
+            console.log(1)
+        }
+        function fn2(){
+            console.log(2)
+        }
+        /* 
+            fn1函数执行call方法将this指向改成fn2函数，但是由于
+            fn1函数中没有this，所以相当于call方法没有执行，
+            还是执行的fn1函数中的代码
+        */
+        fn1.call(fn2);//1
+        /* 
+            先执行的是fn1.call调用call方法，将其this指向改成fn2函数
+            想当于执行了fn2函数
+        
+        */
+        fn1.call.call(fn2)//2
+    </script>
+</body>
+</html>

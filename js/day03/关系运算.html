@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            关系运算
+                两个操作符进行比较，一定会返回一个布尔值
+                >= > < <=
+        */
+        //纯数字
+        console.log(1 > 2); //false
+        console.log(1 < -2); //false
+
+        //有一个字符串，一个number，则都转为number比较 NaN和任意类型比较都是false
+        console.log(1 > '2'); //false
+        console.log(1 > 'a'); //false
+        console.log(1 > '0'); //true
+
+        /* 两个都是字符串
+            按照asc码进行按照顺序依次比较，如果比较出结果直接停止
+            小写字母>大写字母>数字
+        */
+        console.log('3' > '23') //true
+        console.log('a' > 'ab') //false
+        console.log('ab' > 'cd') //false
+        console.log('z' < 'A') //true
+        console.log('-------------')
+        console.log(true > 2); //false
+        console.log(false <= 0); //true
+        console.log('-------------')
+        console.log(undefined > 0) //false
+        console.log(undefined <= 0) //false
+        console.log(undefined > '0') //false
+        console.log(undefined <= '0') //false
+        console.log('-------------')
+        console.log([] > 1) //false
+        console.log([] <= 1) //true
+        console.log([1] >= 1) //true
+        console.log([1, 2] >= 1) //false
+        console.log('-------------')
+        console.log({} <= []) //false
+        console.log({} > []) //true
+        console.log({} >= true) //true
+        console.log({} < true) //false
+    </script>
+</body>
+
+</html>

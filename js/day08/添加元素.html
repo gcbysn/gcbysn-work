@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            添加元素：
+                push和unshift：向数组的后端或者前前端插入元素，可以同时
+                插入多个元素，返回修改后的数组的长度
+                使用下标的方式 直接可以给数组添加元素 或者修改某些值
+                concat：合并数组，把concat所有的参数添加的数组的尾部
+                直接返回合并的新数组
+                    concat可以有多个参数，一起合并
+                    concat的参数可以是数组，把数组展开合并到arr中
+                    只能展开一个维度
+                splice：添加数组中任意位置的某些值
+                    参数1：开始删除的位置
+                    参数2:删除的长度
+                    参数3：可以是任意多个值，是在删除的位置 添加的元素
+        */
+       var arr=[1,2,3,4,5,6,7,8,9];
+       console.log(arr.push(0))//10
+
+       arr[arr.length]="a";
+       console.log(arr);
+
+       var arr=[1,2,3,4,5];
+       var re=arr.concat([1,2,3]);
+       console.log(arr,re);
+
+       var arr=[1,2,3,4,5,6,7,8,9];
+       var re =arr.splice(3,0,'a','b','c');
+       console.log(arr);
+       console.log(re);
+
+    </script>
+</body>
+</html>

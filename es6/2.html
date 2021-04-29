@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*   console.log("AAAA");
+        setTimeout(() => console.log("BBBB"), 1000);
+        setTimeout(() => console.log("DDDD1"), 2000);
+        setTimeout(() => console.log("DDDD2"), 3000);
+        const start = new Date();
+        while (new Date() - start < 3000) {}
+        console.log("CCCC");
+        setTimeout(() => console.log("DDDD3"), 0);
+        setTimeout(() => console.log("DDDD4"), 1000);
+        new Promise((resolve, reject) => {
+                console.log("EEEE");
+                foo.bar(100);
+            })
+            .then(() => console.log("FFFF"))
+            .then(() => console.log("GGGG"))
+            .catch(() => console.log("HHHH"));
+        console.log("IIII"); */
+    </script>
+    <script>
+        /* 
+            宏 [  ]
+            微
+            控制台  DDDD AAAA CCCC BBBB GGGG IIII HHHH FFFF 
+        
+        */
+        // async function async1() {
+        /*         console.log("AAAA");
+                async2();
+                console.log("BBBB");
+            }
+            async function async2() {
+                console.log("CCCC");
+            }
+            console.log("DDDD");
+            setTimeout(function () {
+                console.log("FFFF");
+            }, 0);
+            async1();
+            new Promise(function (resolve) {
+                console.log("GGGG");
+                resolve();
+            }).then(function () {
+                console.log("HHHH");
+            });
+            console.log("IIII"); */
+        /*  setTimeout(_ => console.log(4))
+
+         new Promise(resolve => {
+             resolve()
+             console.log(1)
+         }).then(_ => {
+             console.log(3)
+             Promise.resolve().then(_ => {
+                 console.log('before timeout')
+             }).then(_ => {
+                 Promise.resolve().then(_ => {
+                     console.log('also before timeout')
+                 })
+             })
+         })
+
+         console.log(2) */
+        // 1 2 3  before timeout also before timeou 4
+
+
+        /*   setTimeout(() => {
+              // 宏任务队列 2.1
+              console.log('timer_1');
+              setTimeout(() => {
+                  // 宏任务队列 3
+                  console.log('timer_3')
+              }, 0)
+              new Promise(resolve => {
+                  resolve()
+                  console.log('new promise')
+              }).then(() => {
+                  // 微任务队列 1
+                  console.log('promise then')
+              })
+          }, 0)
+
+          setTimeout(() => {
+              // 宏任务队列 2.2
+              console.log('timer_2')
+          }, 0)
+
+          console.log('========== Sync queue ==========') */
+        // Sync queue  timer_1 new promise 'promise then timer_2 timer_3
+
+        /* 
+                  1 10 4 2 11   5   6 8 7 3 9
+        */
+        /*   new Promise(resolve => {
+              console.log(' 1');
+              resolve();
+          }).then(() => {
+              console.log('2');
+              setTimeout(() => {
+                  console.log('3');
+              }, 0);
+          })
+          setTimeout(() => {
+              console.log('5');
+              new Promise(resolve => {
+                  console.log('6');
+                  resolve();
+              }).then(() => {
+                  console.log('7');
+              })
+              console.log('8');
+              setTimeout(() => {
+                  console.log('9');
+              }, 0);
+          }, 0);
+          new Promise(resolve => {
+              console.log('10');
+              resolve();
+          }).then(() => {
+              console.log('11');
+          }) 
+          console.log('4'); */
+        /* 
+        script start
+        async1 start
+        async2
+        promise1
+        script end
+        async1 end
+        promise2
+        setTimeout
+        */
+
+        /*  
+            宏:  async2  setTimeout
+            微：  promise2
+            控制台：   script start 
+                      async1 start 
+                      async2
+                      promise1
+                      script end
+                      async1 end
+                      promise2
+                      setTimeout
+        */
+        async function async1() {
+            console.log('async1 start');
+            await async2();
+            console.log('async1 end')
+            /* 
+                await后面的代码相当于promise.then进入微队列
+            */
+        }
+        async function async2() {
+            console.log('async2')
+        }
+        console.log('script start');
+        setTimeout(function () {
+            console.log('setTimeout')
+        }, 0);
+        async1();
+        new Promise(function (resolve) {
+            console.log('promise1');
+            resolve()
+        }).then(function () {
+            console.log('promise2')
+        });
+        console.log('script end')
+    
+    </script>
+</body>
+
+</html>

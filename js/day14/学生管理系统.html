@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 500px;
+            border: 1px solid black;
+        }
+
+        tr,
+        td,
+        th {
+            border: 1px solid black;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="###">
+        <label>
+            姓名：<input type="text" class="name">
+        </label><br>
+        <label>
+            年龄：<input type="text" class="age">
+        </label><br>
+        <label>
+            性别：<input type="text" class="sex">
+        </label><br>
+        <button type="button" id="btn">添加</button>
+    </form>
+    <table>
+        <tr>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>性别</th>
+            <th>操作</th>
+        </tr>
+        <tr>
+            <td>张三</td>
+            <td>18</td>
+            <td>男</td>
+            <td><a href="##">删除</a></td>
+        </tr>
+    </table>
+    <script>
+        //获取元素
+        var btnNode = document.querySelector('#btn');
+        var nameNode = document.querySelector('.name');
+        var ageNode = document.querySelector('.age');
+        var sexNode = document.querySelector('.sex');
+        var tbodyNode = document.getElementsByTagName('tbody')[0];
+        var aNode = document.querySelectorAll('tr td a');
+        //绑定点击事件
+        btnNode.onclick = function () {
+            //创建字符串str
+            var str = ` <tr>
+            <td>` + nameNode.value + `</td>
+            <td>` + ageNode.value + `</td>
+            <td>` + sexNode.value + `</td>
+            <td><a href="##">删除</a></td>
+        </tr> `
+            //将输入框中的内容添加到表格的末尾
+            tbodyNode.innerHTML += str;
+            aNode = document.querySelectorAll('tr td a');
+            aNode.forEach(function (item) {
+                item.onclick = function () {
+                    //删除整行
+                    this.parentNode.parentNode.remove();
+                }
+            })
+        }
+        aNode.forEach(function (item) {
+            item.onclick = function () {
+                //删除整行
+                this.parentNode.parentNode.remove();
+            }
+        })
+    </script>
+</body>
+
+</html>

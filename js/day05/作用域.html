@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            作用域：变量子啊程序中可以访问的有效范围，分为全局和局部
+                全局变量：变量在整个页面中都是可见的，可以被自由的访问
+                局部变量，变量仅能在声明的当前函数内部可见，函数外时不允许访问的
+                作用域的划分，其实就是通过函数划分
+        */
+        //在全局作用域声明 所以a是全局变量
+       var a=1;
+        //在全局作用域声明 所以fn也是全局变量
+       function fn(){
+            //函数划分了作用域，所以进到函数内部 就是局部作用域
+            var b=2;//在函数中声明，所以b是局部变量
+            console.log(a,b)//1,2
+            //局部的函数 inner只对当前fn内部可见
+            function inner(){
+                var c=1;
+                console.log(c)//1
+                console.log(b)//2
+            }
+
+            inner();
+       }
+       fn();
+    </script>
+</body>
+</html>

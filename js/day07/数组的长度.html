@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            数组的长度：
+                - 数组拥有length属性，返回数组元素的长度
+                - 数组的length属性可读可写       
+        */
+
+        var arr = ["a", "b", "c", "d", "e", "f"];
+        console.log(arr.length); //可读
+
+
+        arr.length = 3; //可写 如果长度低了 则删除数组后边元素
+        arr.length = 300; //可读 如果长度大了 则后边都是undefined
+        console.log(arr);
+
+        arr.length = 0;
+        console.log(arr)
+    </script>
+</body>
+
+</html>

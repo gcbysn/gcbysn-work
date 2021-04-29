@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            undefined：一般在错误的时侯出现，而不是我们刻意书写的结果
+        */
+
+        var d;
+        //声明变量未赋值，就使用该变量则输入undefined
+        console.log(d);
+
+        function people(name,behavior,skills){
+            console.log("我是"+name)
+            console.log("我在"+behavior);
+            console.log("我会"+skills);          
+        }
+        //函数传递实参的个数比形参少时，缺少的会输出undefined
+        people("张三","看书");
+
+        var student={
+            name:"张三",
+            class:"1班",
+            sex:"男"
+        }
+        //使用对象没有的属性，则该属性为undefined
+        console.log(student.age);
+
+        function add(a,b){
+            var num=a+b;
+        }
+        //函数没有返回值时，返回的值为undefined
+        console.log(add(3,5));
+
+
+    </script>
+</body>
+</html>

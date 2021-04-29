@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: red;
+            position: fixed;
+            left: 0px;
+            top: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <script>
+        var boxNode = document.getElementById("box");
+        //声明一个变量保存小球横向坐标，角度变化
+        var x = 0;
+        //声明一个变量保存小球y轴初始位置
+        var startY = 300;
+        var y = 0;
+        //控制每隔20毫秒 执行一个函数
+        setInterval(function () {
+            x++;
+            y = startY - Math.sin(x * 2 * Math.PI / 360) * 200;
+
+            boxNode.style.left = x + "px";
+            boxNode.style.top = y + "px";
+
+        },20)
+    </script>
+</body>
+
+</html>

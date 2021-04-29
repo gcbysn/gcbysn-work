@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            reverse方法:
+                数组倒序输出
+                直接改变了原数组，并把原数组的地址值返回出去
+        */
+
+        var arr = [1, 3, 4, 56, 8, 5, 9, 2];
+        var re = arr.reverse(); //返回原数组的地址
+        console.log(arr, re)
+        console.log(re === arr)
+
+        arr.myReverse=(function(){
+            var lth = this.length - 1;
+            for (var i = 0; i < parseInt(this.length / 2); i++) {
+                /* 
+                    进行换位操作
+                        a=a+b;
+                        b=a-b;
+                        a=a-b;
+                */
+                this[i] = this[i] + this[lth - i];
+                this[lth - i] = this[i] - this[lth - i];
+                this[i] = this[i] - this[lth - i];
+            }
+            return this;
+        })
+
+        function myReverse(arr) {
+           
+        }
+        var re =arr.myReverse(); //返回原数组的地址
+        console.log(arr, re)
+        console.log(re === arr)
+    </script>
+</body>
+
+</html>

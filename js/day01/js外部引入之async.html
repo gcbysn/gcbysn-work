@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/1.css">
+    <!-- 
+        async:异步加载js文件
+        碰到外部引入js文件时，会异步下载js文件（不会中断html解析），但是某个js文件先下载完成，会立即停止解析html
+        开始执行js
+     -->
+    <script src="./js/1.js" async></script>
+</head>
+<body>
+    <div id="app">
+        外部引入之async(异步加载js文件)
+    </div>
+    <div id="defer">
+        <div class="html">html</div>
+        <div class="html2">html</div>
+        <div class="execution">js执行</div>
+        <div class="js">js下载</div>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+      
+        function Student(name, age, sex) {
+            this.name = name;
+            this.age = age;
+            this.sex = sex;
+            /* 
+                 构造函数本身没有返回值，直接返回实例化对象
+                 但是如果构造函数书写了return呢？
+                 如果构造函数中return的是基本类型值，则不影响构造函数返回实例化对象
+                 如果构造函数中return的是对象类型，则不再返回实例化对象，而是直接返回这个对象类型值
+            */
+
+            return null;
+        }
+        Student.prototype.study = function () {
+            console.log("学习");
+        }
+        Student.prototype.eat=function(){
+            console.log("吃饭");
+        }
+
+        var stu=new Student('xiaoming',19,'nan');
+        console.log(stu);
+
+          /* 
+            new到底做了什么
+                1.返回了一个对象
+                2、让这个对象的隐式原型指向构造函数的显示原型
+                3、构造函数的this指向实例化对象
+                4、判断构造函数的返回值是什么类型            
+        */
+       function myNew(constr){
+            //返回了一个对象
+            var obj={};
+            //让这个对象的隐式原型指向构造函数的显示原型
+            obj.__proto__=constr.prototype;
+
+            //获取给构造函数传递的参数 通过arguments来拿
+            var newArr=Array.from(arguments).slice(1);
+
+            //调用构造函数，并把他的this指向实例化对象obj
+            var re=constr.apply(obj,newArr);
+
+            if(typeof re==='obj' && re!==null ||typeof re ==='function'){
+                return re;
+            }
+            return obj;
+       }
+       var stu2=new Student('xiaoming',18,'nv');
+       console.log(stu2);
+       console.log(stu2.study);
+       console.log(stu2.constructor);
+       console.log(stu2 instanceof Student);
+
+      
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .tab {
+            width: 600px;
+            border: 1px solid #000;
+            margin: 50px auto;
+        }
+
+        #title {
+            display: flex;
+        }
+
+        #title>h2 {
+            width: 198px;
+            border: 1px solid #000;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            font-size: 24px;
+            background-color: azure;
+            cursor: pointer;
+        }
+
+        #title>h2.active {
+            background-color: red;
+            color: #fff;
+        }
+
+        #con {
+            height: 400px;
+            overflow: auto;
+        }
+
+        #con>li {
+            height: 400px;
+            line-height: 400px;
+            text-align: center;
+            font-size: 40px;
+            /* display: none; */
+        }
+
+        #con>li:nth-child(1) {
+            background-color: pink;
+        }
+
+        #con>li:nth-child(2) {
+            background-color: yellowgreen;
+        }
+
+        #con>li:nth-child(3) {
+            background-color: skyblue;
+        }
+
+        #con>li.show {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="tab">
+        <div id="title">
+            <h2 class="active">标题一</h2>
+            <h2>标题二</h2>
+            <h2>标题三</h2>
+        </div>
+        <ul id="con">
+            <li class="show">内容一</li>
+            <li>内容二</li>
+            <li>内容三</li>
+        </ul>
+    </div>
+    <script>
+        var h2Nodes = document.querySelectorAll('#title>h2');
+        var liNodes = document.querySelectorAll('#con>li');
+        var conNode = document.getElementById('con')
+
+        console.log(h2Nodes); //新方法获取的元素是NodeList对象，拥有forEach方法
+
+        var tabTimer = null;
+        h2Nodes.forEach(function (item, index) {
+            item.onclick = function () {
+                //先清空所有的样式
+                h2Nodes.forEach(function (item, index) {
+                    item.classList.remove("active");
+                })
+                //给当前的元素添加
+                this.classList.add("active");
+
+                //内容位移动画
+                // 起始位置（当前点击的时候滚动条的位置）
+                var startLocation = conNode.scrollTop;
+                //结束位置(当前点击元素的下标 * 一个内容的高度)
+                console.log(index); //index就是当前点击元素的下标
+                //获取结束位置
+                var endLocation = index * liNodes[0].offsetHeight;
+                //起始步数（累加判断是否走完）
+                var startStep = 0;
+                //结束步数
+                var endStep = 30;
+                //每一次所走的距离
+                var everyStep = (endLocation - startLocation) / endStep;
+
+                //动画开始
+                tabTimer = setInterval(function () {
+                    //起始位置累加
+                    startLocation += everyStep;
+                    //起始步数累加 用来判断临界值
+                    startStep++;
+                    if (startStep >= endStep) {
+                        clearInterval(tabTimer);
+                    }
+                    //如果scrollTop直接参加运算 则会忽略小数
+                    // console.log(oCon.scrollTop, everyStep)
+                    // oCon.scrollTop = oCon.scrollTop + everyStep;
+                    //赋值操作
+                    conNode.scrollTop = startLocation;
+                }, 10)
+            }
+        })
+    </script>
+</body>
+
+</html>

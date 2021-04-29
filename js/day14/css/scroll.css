@@ -1,0 +1,30 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+.scroll {
+    width: 30px;
+    height: 100%;
+    background-color: #ccc;
+    position: fixed;
+    right: 0;
+    top: 0;
+}
+
+.bar {
+    width: 30px;
+    height: 30px;
+    background-color: slateblue;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+}
+.app{
+    position: relative;
+    top:0;
+}

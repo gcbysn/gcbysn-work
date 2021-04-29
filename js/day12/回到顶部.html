@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            height: 3000px;
+        }
+
+        #returnTop {
+            width: 100px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: aqua;
+            position: fixed;
+            right: 10px;
+            bottom: 10px;
+            text-align: center;
+            line-height: 50px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="returnTop">
+        回到顶部
+    </div>
+    <script>
+        var returnTopNode = document.getElementById('returnTop');
+
+        //监听滚动条滚动，当滚动条大于300的时候显示  小于300的时候消失
+        window.onscroll = function () {
+            //每次滚动条滚动 即获取滚动条的距离
+            var winScroll = window.pageYOffset;
+            if (winScroll > 300) {
+                returnTopNode.style.display = "block";
+            } else {
+                returnTopNode.style.display = "none";
+            }
+        }
+
+
+        //给回到顶部按钮绑定点击事件，当点击的时候直接回到顶部
+        oReturnTop.onclick = function () {
+            //直接设置滚动条为0
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+</html>

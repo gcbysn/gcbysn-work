@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    你的年龄: <input type="text" id="age">
+    你的性别: <input type="text" id="sex"><br>
+    婚姻: <input type="radio" name="hun" value="已婚" class="h">已婚
+    <input type="radio" name="hun" value="未婚" class="h">未婚<br>
+    <button id="btn">查询</button>
+    <script>
+        /*  公司给员工买保险（用户通过此程序查询自己是否符合条件）：
+        1.只要结婚的都买;
+        2.没有结婚的男人 25岁以下不买;
+        3.没有结婚的姑娘 22岁以下不买. */
+
+        //获取元素
+        var ageNode = document.getElementById("age");
+        var sexNode = document.getElementById("sex");
+        var hNodes = document.getElementsByClassName("h");
+        var btnNode = document.getElementById("btn");
+        //定义一个变量保存婚姻状况
+        var h = null;
+        //遍历单选框元素 
+        for (var i = 0; i < hNodes.length; i++) {
+            //给单选框绑定事件 （当内容发生改变时）
+            hNodes[i].onchange = function () {
+                //将选中的单选框的值赋值给变量
+                h = this.value;
+            }
+        }
+        //给按钮绑定点击事件
+        btnNode.onclick = function () {
+            //判断员工的婚姻状况
+            if (h === "已婚") {
+                console.log("买保险");
+            } else if (ageNode.value < 25 && sexNode.value === "男" || ageNode.value < 22 && sexNode.value ===
+                "女") {
+                console.log("不买保险");
+            } else {
+                console.log("买保险");
+            }
+        }
+    </script>
+</body>
+
+</html>

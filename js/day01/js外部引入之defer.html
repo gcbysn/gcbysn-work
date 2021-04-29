@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/1.css">
+    <script src="./js/1.js" defer></script>
+    <!-- 
+        defer 碰到外部引入js文件时，会异步下载js（不会中断html解析），当html全部解析完成，开始按照顺序执行js
+     -->
+</head>
+<body>
+    <div id="app">
+        外部引入之defer(延迟加载js文件)
+    </div>
+    <div id="defer">
+        <div class="html">html</div>
+        <div class="execution">js执行</div>
+        <div class="js">js下载</div>
+    </div>
+    
+</body>
+</html>

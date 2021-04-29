@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*    将数组的0去掉
+            数组排序去重
+            返回数组的最大最小值
+            求一组数中的所有数的和和平均值
+            求一组数中的最大值和最小值，以及所在位置
+            翻转数组
+            冒泡排序，从小到大 
+        */
+        //将数组的0去掉
+        var arr = [0, 3, 4, 5, 6, 0, 1, 7, 0, 2];
+        //使用filter方法过滤arr数组
+        var arr1 = arr.filter(function (item, index, array) {
+            //返回不等于0的元素
+            return item != 0;
+        })
+        console.log(arr1)
+
+
+        //数组排序去重
+        var arr2 = [0, 3, 4, 5, 6, 0, 1, 7, 0, 2];
+        //使用foreach方法遍历数组
+        arr2.forEach(function (item, index, array) {
+            //判断元素正序出现的下标和倒序出现的下标是否一样
+            /* 
+                如果一样则表示这个元素只有一个
+                如果不一样则表示这个元素不止一个
+            */
+            if (arr2.indexOf(item) !== arr2.lastIndexOf(item)) {
+                //不相等则使用splice方法从当前下标开始删除一个，将重复的元素删除
+                arr2.splice(index, 1);
+            }
+        })
+        //排序
+        arr2.sort(function (a, b) {
+            return a - b;
+        })
+        console.log(arr2)
+
+
+        //返回数组的最大最小值
+        var arr3 = [0, 3, 4, 5, 6, 10, 1, 7, 9, 2];
+        //先将数组进行升序排序
+        arr3.sort(function (a, b) {
+            return a - b;
+        })
+        //第一个元素则是最小值，最后一个则是最大值
+        console.log("最小值 " + arr3[0], " 最大值" + arr3[arr3.length - 1]);
+
+
+        //求一组数中的所有数的和和平均值
+        var arr4 = [0, 3, 4, 5, 6, 10, 1, 7, 9, 2];
+        //声明两个变量分别保存 所有数的和及平均值
+        var num = 0,
+            p = 0;
+        //循环遍历数组进行累加操作
+        arr4.forEach(function (item, index) {
+            num += item;
+        })
+        //和处以长度得到平均值
+        p = num / arr4.length;
+        console.log(num, p);
+
+        //求一组数中的最大值和最小值，以及所在位置
+        var arr5 = [3, 6, 8, 67, 12, 45, 76, 98, 1];
+        //声明两个变量分别保存最小值和最大值
+        var max=arr5[0];
+        var min=arr5[0];
+        //循环遍历数组进行比较操作
+        arr5.forEach(function (item, index, array) {
+           if(item>max){
+                max=item
+           }
+           if(item<min){
+               min=item
+           }
+        })
+        console.log("最大值："+max+" 下标为："+arr5.indexOf(max),"最小值为："+min+" 下标为："+arr5.indexOf(min))
+        //翻转数组
+        var arr6 = [0, 3, 4, 5, 6, 10, 1, 7,8, 9];
+        var lth=arr6.length-1;
+        for (var i = 0; i <parseInt(arr6.length/2); i++) {
+            /* 
+                进行换位操作
+                    a=a+b;
+                    b=a-b;
+                    a=a-b;
+            */
+           arr6[i]=arr6[i]+arr6[lth-i];
+           arr6[lth-i]=arr6[i]-arr6[lth-i];
+           arr6[i]=arr6[i]-arr6[lth-i];
+        }
+        console.log(arr6)
+        //冒泡排序
+    </script>
+</body>
+
+</html>

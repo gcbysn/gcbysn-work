@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <script>
+         /* 
+            什么是数组：
+                -有序数据的集合
+                -数组的每一个内容被称作元素，数组的key是从0开始的自然递增的数字，被称作为下标
+                -数组可以保存任意类型的值
+                -数组拥有length属性，并且长度弹性可读写
+
+            定义数组
+                -字面量 var arr=[];数组末尾可以书写逗号并不算多余的值
+                -实例化 var arr=new Array();
+                    -当Array的参数是一个数值的时候，会被当做数组的长度，而不是数组的元素。
+
+         */
+        
+         //字面量创建
+         var arr=[1,2,3,4,5,6];
+
+         var arr=[1];
+         console.log(arr);
+
+         //实例化创建
+        var arr2=new Array(1,2,3,4,5)
+        var arr2=new Array(5);
+        console.log(arr2)
+
+        //多维数组 数组中的值有的也是一个数组的时候
+        var arr3=[1,[2,3],4];
+        console.log(arr3);
+
+        /* 
+            空位数组：数组中有包含空元素，也就是数组的两个逗号之间没有元素
+            空位的原因可能是被删除的，也可能是我们定义的
+            空元素可以读写，返回undefined   
+        */
+       var arr4=[1,2,3,5,6];
+       console.log(arr4);
+
+       //关联数组
+       //数组身份：1.数组 按序保存数组内部的值
+       //2.对象，可以拓展属性和方法，不允许保存的值
+       var arr5 = [1, 2, 3, 4];
+        arr5[1] = 6;
+        arr5[1.1] = 10;
+        arr5[3.1] = 10;
+        arr5["a"] = 10;
+        console.log(arr5)
+        console.log(arr5[1.1])
+
+        //给数组扩展的属性和方法不影响数组内部的值
+        for (var i = 0; i < arr5.length; i++) {
+            console.log(arr5[i])
+        }
+
+        arr5.forEach(function (item, index) {
+            console.log(item);
+        })
+
+        /* 
+            伪类数组
+                1.伪类数组不是数组，而是类似数组
+                2.伪类数组其实是一个对象，满足两个条件
+                    1.key从0开始自然递增
+                    2.拥有length属性
+        
+        */
+        var likeArr = {
+            0: "xiaowang",
+            1: "xiaozhang",
+            2: "xiaohuang",
+            3: "xiaoyan",
+            length: 4
+        }
+        console.log(likeArr);
+     </script>
+</body>
+</html>

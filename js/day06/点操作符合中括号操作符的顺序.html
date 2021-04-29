@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+      /* 
+          对 对象属性进行操作的时候，有两种方式 点操作符 中括号操作符
+          点操作符
+            成员访问
+            obj.xxx：只能把xxx当做字符串使用，并且不能是非法字符
+          中括号操作符
+            中括号操作符完全随时可以使用
+              如果有一个属性名是xxx，因为属性名是字符串类型，则
+              获取方式为obj["xxx"]
+              使用中括号的场景
+                key是非法的
+                key是一个变量
+      */
+      var obj1 = {
+            name: "张三",
+            age: 18,
+            sex: "nan",
+            "student-Id": "01",
+            isEat: true,
+            girlriend:{
+                name:"李四",
+                age:18,
+                sex:"nv"
+            }
+        }
+      
+      //假设有一个a来保存这个key
+      var a="age";
+      //用点好操作符获取age
+      console.log(obj1.age)
+      //把a当做了字符串，不会当做变量，此时获取的是obj的a属性
+      console.log(obj1.a)
+      //非法获取
+      // console.log(obj1.student-Id)
+
+      //中括号
+      console.log(obj1["age"]);
+      console.log(obj1["student-Id"]);
+      //如果key是一个变量则也需要使用[]获取，因为[]会先进行运算
+      console.log(obj1[a]);
+    </script>
+</body>
+</html>

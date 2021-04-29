@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+                基本类型和对象类型
+                    -数据类型：分为5种基本类型和一种复杂类型分别对应这变量的基本类型和引用类型
+                    -内存中有两块存储区域，一种是栈区，一个是 堆区
+                    -栈区保存的是基本类型值和对象类型的引用地址堆区保存的是对象类型值
+                    -变量是栈区一个内存区域的一个代号，保存的可能是一个局部类型值，也可能是对象的地址值
+                    -我们不能直接操作堆区的内容，而是通过栈区的地址去找到对象的对象操作
+
+                局部类型值的特点
+                    -基本类型值：null undefined string number
+                    boolean (bigint symbol)
+                    -基本类型值都是保存在栈区，可以直接通过变量 获取到值进行操作
+                    -基本类型值的特点
+                       1.基本类型值是不可变(不能改变自身，只能直接替换)
+                       2.基本类型值是不能添加属性和方法的，添加了也获取不到
+                       3.基本类型的比较是值的比较
+                对象类型值的特点
+                    -对象类型值：object array function regexp Math date
+                    -对象类型的特点
+                        -对象的值是可变的，可以拓展属性和方法
+                        -对象保存在堆区中，地址保存在栈区中，变量保存的是栈区的地址值
+                        -变量和变量的比较是引用地址的比较，而不是对象 值的比较
+
+        
+            */
+        //基本类型值
+        var a = 1; //栈区中有一个区域保存的是1，这个区域有一个点号叫做a
+        console.log(a); //当我们访问a的时候，直接可以操作a中保存的值
+        a = 2; //直接把a保存的值替换为了2
+
+
+        var a = "hello";
+        a.index = 2;//给a添加一个自定义属性
+        console.log(a.index);//undefined
+
+        var b=1;
+        var d=1;
+        console.log(b===d);//直接拿到 b 和 d保存的值进行比较得
+
+        var obj={};
+        obj.name="laowang";
+        console.log(obj.name);
+
+        var obj={};//这是一个对象 有一个地址值
+        var obj={};//这个又是一个对象 是另外一个地址值
+        console.log(obj===obj2);//引用类型的比较 是引用地址的比较
+
+        var obj3={};//obj3保存的地址是0x111
+        var obj4=obj3;//有一个新的变量obj4 把obj3的地址给了obj一起保存
+        console.log(obj3 === obj4);
+        obj4.name = "laowang"; //因为obj3和obj4指向的是同一个对象，所以修改了obj3也是修改了obj4内对象的值
+        console.log(obj3.name); //laowang
+
+        /* 
+            函数有两个身份：1函数，用来调用执行某些代码
+            2.对象，被称作函数对象，也可以拓展属性和方法
+        */
+       var fn=function(){
+
+
+       }
+
+       fn.student="js";
+       console.log(fn.student);
+
+       /* 
+            数组两个身份：1.数组：保存一些值 
+            2.对象，被称作为数组对象，可以拓展属性和方法
+       */
+      var arr=[];
+      arr.study="jquery";
+       console.log(arr.study)
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            函数的参数
+                形参：定义函数时，自己起的参数的名字（可以当做变量）
+                实参：调用函数时，实际传入的参数
+        
+        */
+        //参数个数相同
+        function num(a,b){
+            console.log(a+b)
+        }
+        num(9,8);
+        //参数个数不同的
+        function fn1(a,b,c){
+            console.log(a+b+c);
+        }
+        fn1(1,2)//NaN   1+2+undefied=NaN
+        fn1(1,null,3)//4  1+3=4
+        fn1(1,2,3,4)//6 1+2+3=6
+
+        //封装一个计算N个数字相加的和
+        function sum(){
+            /* 
+                arguments:表示当前所在实参的集合
+                    拥有一个length属性，代表当前 实参的长度
+                    只能在函数中使用
+
+                匿名函数也有length方法，返回函数的形参长度
+            
+            */
+           var sun=0;
+           for(var i=0;i<arguments.length;i++){
+                sun +=arguments[i];    
+           }
+           return sun;
+        }
+        console.log(sum(1,2,3,4,5))
+    </script>
+</body>
+</html>

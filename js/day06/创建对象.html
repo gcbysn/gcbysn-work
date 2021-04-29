@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            自定义对象：
+                一种存储数据的结构，键值对的形式保存数据 没有顺序
+
+                创建对象：
+                    字面量方法 var o={};
+                    实例化的方式创建 var o=new Object();
+        */
+        //字面量方法创建对象
+        var obj1 = {};
+        console.log(obj1)
+
+        //实例化创建对象
+        var obj2 = new Object();
+        console.log(obj2);
+
+        /* 
+            创建对象的注意事项
+            字面量方法创建对象 这种方法创建对象的时候，可以自己直接书写属性在对象中
+            对象中书写属性的格式是：key:value
+            对象的value可以是任意类型
+            对象的key其实是当做字符串解析的，只不过可以不用添加引号
+
+        */
+        var a = "hello";
+        var obj1 = {};
+        var obj1 = {
+            name: "张三",
+            age: 18,
+            sex: "nan",
+            "studentId": "01",
+            isEat: true,
+            girlriend:{
+                name:"李四",
+                age:18,
+                sex:"nv"
+            }
+        }
+        console.log(obj1)
+        //实例化创建对象，这种方法创建对象添加类名，只能一个一个的添加,不能在创建的时候添加
+        var obj2=new Object();
+        console.log(obj2)
+
+    </script>
+</body>
+
+</html>

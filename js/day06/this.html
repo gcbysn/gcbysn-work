@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //封装一个函数，打印this
+        //this指向其所在函数的调用者，如果没有则指向window
+
+        function fn1(){
+            console.log(this)
+        }
+        //this和函数的调用方式相关
+        fn1();
+        
+        //把当前函数写在对象中
+        var obj={
+            name:"张三",
+            do:fn1,
+            eat:function(){
+                console.log(this);
+                fn1();//window
+            }
+        }
+        //有一个上下文对象调用 obj
+        obj.do();
+        obj.eat();
+
+        //隐式丢失
+        var f=obj.do;//将fn1函数的地址赋值给f,obj并没有执行函数fn1()
+        f();//window
+
+        
+        //事件函数 上下文调用 document
+        document.onclick=fn1;
+
+
+        var x = 1;
+        var obj = {
+            f: function () {
+                console.log(this.x);
+            },
+            x: 2,
+        };
+/* 
+        obj.f相当于是函数f在栈内存中保存的地址，obj.j=obj.f则是将保存的地址赋值给了obj.f，
+        而表达式的运行环境是发生在全局执行上下文中，则f的this指向了全局window，即window.x=1；
+
+ */
+        (obj.f=obj.f)();//1
+        /* 
+        表达式false||obj.f 则是逻辑或运算，第一个为假，则返回第二个的值，obj.f一样是函数f在栈内存中保存的地址
+        而表达式的运行环境是发生在全局执行上下文中，则f的this指向了全局window，即window.x=1；
+        */
+        (false||obj.f)();//1
+        /* 
+            (obj.f,obj.f)执行的是逗号操作符，逗号操作符取最后一个逗号后一个的，则是obj.f
+        */
+        (obj.f,obj.f)();//1
+        (obj.f)();//2小括号只是一个逻辑分割符 不是运算符
+        obj.f();//2
+    </script>
+</body>
+
+</html>

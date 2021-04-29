@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            对象的增删改查
+                增:添加一个属性进去 obj.xxx=xxx
+
+                删：delete obj.xxx
+
+                改：覆盖原有的属性 obj.xxx=xxx
+
+                查：获取obj.xxx 返回当前对象的xxx属性
+        
+        */
+        var obj=new Object();
+
+        //添加属性 
+        obj.name="张三";
+        obj.age="18";
+        obj.sex="nan";
+        console.log(obj)
+
+        //删除属性
+        delete obj.sex;
+        console.log(obj)
+
+        //改
+        obj.name="李四";
+        console.log(obj);
+
+        //查
+        var re=obj.name;
+        console.log(re);
+    </script>
+</body>
+</html>

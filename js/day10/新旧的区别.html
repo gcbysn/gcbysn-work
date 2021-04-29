@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">添加元素</button>
+    <ul id="app">
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <script>
+        /* 
+            旧方法
+                获取元素是动态的，当元素改变了，获取的变量保存的值也会跟着改变
+            新方法
+                获取元素是静态的，无论以后元素怎么改变，都不影响获取的效果
+        
+        */
+        // var btnNode=document.getElementById("btn");
+        // var appNode=document.getElementById("app");
+        // var liNodes=appNode.getElementsByTagName("li");
+
+        // btnNode.onclick=function(){
+        //     //原来有几个li我就生成几个li
+        //     for (var i = 0; i < liNodes.length; i++) {
+        //             //创建一个li
+        //             var li=document.createElement("li");
+        //             li.textContent="new";
+        //             //将新的li插入到ul的末尾
+        //             appNode.appendChild(li);
+        //     }
+        // }
+
+
+        var btnNode=document.getElementById("btn");
+        var appNode=document.getElementById("app");
+        var liNodes=document.querySelectorAll("#app li");
+
+        btnNode.onclick=function(){
+            //原来有几个li我就生成几个li
+            for (var i = 0; i < liNodes.length; i++) {
+                    //创建一个li
+                    var li=document.createElement("li");
+                    li.textContent="new";
+                    //将新的li插入到ul的末尾
+                    appNode.appendChild(li);
+            }
+        }
+
+
+    </script>
+</body>
+</html>

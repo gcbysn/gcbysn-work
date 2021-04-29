@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="num">id排序</button>
+    <button id="price">价格排序</button>
+    <button id="hot">热度排序</button>
+    <ul id="nav">
+
+    </ul>
+    <script>
+        var ulNode = document.getElementById("nav");
+        var numNode = document.getElementById("num");
+        var priceNode = document.getElementById("price");
+        var hotNode = document.getElementById("hot");
+
+        var data = [{
+                brand: "苹果手机",
+                num: "10000",
+                price: "11988",
+                hot: "199"
+            },
+            {
+                brand: "联想手机",
+                num: "9000",
+                price: "1988",
+                hot: "1199"
+            },
+            {
+                brand: "华为手机",
+                num: "20000",
+                price: "12988",
+                hot: "1299"
+            },
+            {
+                brand: "三星手机",
+                num: "13000",
+                price: "7988",
+                hot: "3199"
+            },
+            {
+                brand: "魅族手机",
+                num: "4000",
+                price: "988",
+                hot: "1099"
+            },
+            {
+                brand: "小米手机",
+                num: "14000",
+                price: "19988",
+                hot: "109"
+            },
+            {
+                brand: "锤子手机",
+                num: "100",
+                price: "88",
+                hot: "199999"
+            }
+        ];
+
+        function hd() {
+            ulNode.innerHTML = "";
+            for (var i = 0; i < data.length; i++) {
+                var str = "<li>\
+            <h2>" + data[i].brand + "</h2>\
+            <p>id<span>" + data[i].num + "</span></p>\
+            <p>价格<span>" + data[i].price + "</span></p>\
+            <p>热度<span>" + data[i].hot + "</span></p>\
+        </li>";
+                ulNode.innerHTML += str;
+            };
+        }
+            hd();
+            numNode.onclick = function () {
+               data.sort(function(a,b){
+                   return b.num-a.num;
+               })
+               hd();
+            }
+            priceNode.onclick = function () {
+                data.sort(function(a,b){
+                   return b.price-a.price;
+               })
+               hd();
+            }
+            hotNode.onclick = function () {
+                data.sort(function(a,b){
+                   return b.hot-a.hot;
+               })
+               hd();
+            }
+    </script>
+</body>
+
+</html>

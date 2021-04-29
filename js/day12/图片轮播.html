@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .outer {
+            width: 300px;
+            border: 1px solid #000;
+            margin: 30px auto;
+            position: relative;
+        }
+
+        .inner {
+            overflow: auto;
+        }
+
+        .con {
+            display: flex;
+            width: 2000px;
+        }
+
+        .con img {
+            width: 300px;
+            height: 500px;
+        }
+
+        #left,
+        #right {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: rgba(20, 255, 40, .7);
+            line-height: 50px;
+            text-align: center;
+            color: #fff;
+            font-size: 30px;
+            position: absolute;
+        }
+
+        #left {
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        #right {
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .list {
+            display: flex;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 10px;
+        }
+
+        .list li {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: rgba(24, 145, 34, 0.4);
+            margin: 10px;
+        }
+
+        .list li.active {
+            background-color: rgb(11, 180, 25)
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+        <div class="inner">
+            <div class="con">
+                <img src="./img/01.jpg" alt="">
+                <img src="./img/02.jpg" alt="">
+                <img src="./img/03.jpg" alt="">
+                <img src="./img/04.jpg" alt="">
+                <img src="./img/05.jpg" alt="">
+            </div>
+
+            <p id="left">&lt;</p>
+            <p id="right">&gt;</p>
+
+            <ul class="list">
+                <li class="active"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        /* 
+            需求：
+                每隔两秒换一张图  动画形式换图
+        
+        
+        */
+        var innerNode = document.querySelector('.inner');
+        var imgs = document.querySelectorAll('.con img');
+        var lis = document.querySelectorAll('.list li');
+        var leftNode = document.getElementById('left');
+        var rightNode = document.getElementById('right');
+        // console.log(lis)
+        var moveTimer = null;
+        //初始化一个变量 代表图片的下标
+        var i = 0;
+
+        lis.forEach(function (item, index) {
+            item.onclick = function () {
+                clearInterval(moveTimer)
+                lis.forEach(function (item, index) {
+                    item.classList.remove("active")
+                })
+                innerNode.scrollLeft = index * 300;
+                this.classList.add('active');
+            }
+        })
+
+        move()
+
+        function move() {
+            setInterval(function () {
+                clearInterval(moveTimer)
+                i++;
+                //判断临界值
+                if (i >= imgs.length) {
+                    i = 0;
+                }
+                //以下代码是一步到位，可以换成动画的方式书写
+                // innerNode.scrollLeft = i * imgs[0].offsetWidth;
+
+                //起始位置：当前滚动条的位置
+                var startLocation = innerNode.scrollLeft;
+                //结束位置：
+                var endLocation = i * imgs[0].offsetWidth;
+                //起始步数
+                var startStep = 0;
+                //结束步数
+                var endStep = 40;
+                //每一步走的距离
+                var everyStep = (endLocation - startLocation) / endStep;
+
+                //设置动画计时器
+                moveTimer = setInterval(function () {
+                    startLocation += everyStep;
+                    startStep++;
+                    if (startStep >= endStep) {
+                        clearInterval(moveTimer)
+                    }
+                    innerNode.scrollLeft = startLocation;
+                    if (startLocation % 300 === 0) {
+                        var num = startLocation / 300;
+                        // console.log(num)
+                        lis.forEach(function (item, index) {
+                            item.classList.remove("active")
+                        })
+                        lis[num].classList.add('active');
+                    }
+                }, 10)
+                // console.log(startLocation)
+            }, 2000)
+        }
+        //上一张
+        leftNode.onclick=function(){
+
+        }
+        //下一张
+        rightNode.onclick=function(){
+            
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    本金：<input type="text" id="bj"><br>
+    利率：<input type="text" id="ll" placeholder="请输入1-2之间的数"><br>
+    <button id="btn">确认</button>
+    <script>
+        // 用户输入一个钱数 年利率为1.05(去年的利息和本钱 是下一年的本金) 翻倍需要几年
+
+        //获取元素
+        var bjNode=document.getElementById("bj");
+        var llNode=document.getElementById("ll");
+        var btnNode=document.getElementById("btn");
+        //给按钮绑定事件
+        btnNode.onclick=function(){
+            //声明一个变量保存本金的两倍
+            var bj=(+bjNode.value)*2;
+            var price=+bjNode.value;
+            var num=0;
+            //判断利息加本金是否翻倍
+            while(price<=bj){
+                price*=(+llNode.value)
+                num++;
+            }
+            alert(num+"年");
+        }
+    </script>
+</body>
+</html>

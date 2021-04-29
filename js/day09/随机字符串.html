@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //得到一个随机长度为10字符串
+        var str = "";
+
+        function radomStr(num) {
+            for (var i = 0; i < num; i++) {
+                str += radom(0, 36).toString(36);
+            }
+        }
+        radomStr(10);
+        console.log(str)
+    </script>
+</body>
+
+</html>

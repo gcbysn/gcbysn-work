@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="ipt">
+    <script>
+        
+        /* 
+            键盘事件：
+                绑定给可以输入的元素
+                如果想要控制其他元素，则绑定给document，然后再
+                事件中控制元素
+        
+        */
+        var iptNode=document.getElementById("ipt");
+
+        iptNode.onkeydown=function(){
+            console.log("下")
+        }
+        iptNode.onkeyup=function(){
+            console.log("上")
+        }
+
+        document.onkeydown=function(){
+            console.log("下")
+        }
+        document.onkeyup=function(){
+            console.log("上")
+        }
+    </script>
+</body>
+</html>

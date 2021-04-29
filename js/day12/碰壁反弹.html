@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #outer {
+            width: 800px;
+            height: 500px;
+            background-color: #eee;
+            position: relative;
+            margin: 0 auto;
+
+        }
+
+        #box {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: red;
+            position: absolute;
+            left: 40px;
+            top: 120px;
+        }
+
+        #box1 {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background-color: blue;
+            position: absolute;
+            left: 640px;
+            top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="outer">
+        <div id="box"></div>
+        <div id="box1"></div>
+    </div>
+</body>
+<script>
+    var outerNode = document.getElementById('outer');
+    var boxNode = document.getElementById('box');
+    var boxNode1 = document.getElementById('box1');
+
+    //初始化一个left的值，初始化一个开关，保存x运动方向
+    var l = 40;
+    var l1 = 640;
+    var flagX = true;
+    var flagX1 = true;
+
+    var t = 120;
+    var t1 = 20;
+    var flagY = true;
+    var flagY1 = true;
+
+    bothMove(outerNode, boxNode1, l1, t1, flagX1, flagY1);
+    bothMove(outerNode, boxNode, l, t, flagX, flagY);
+
+    var boxR = boxNode.offsetWidth / 2;
+    var boxR2 = boxNode1.offsetWidth / 2;
+
+    var boxTop = boxNode.offsetTop + boxR;
+    var boxLeft2 = boxNode1.offsetLeft + boxR2;
+
+    var flag = false;
+
+    function bothMove(obj1, obj2, left, top, fx, ft) {
+        clearInterval(boxTimer)
+        var boxTimer = boxTimer = setInterval(function () {
+            if (fx) {
+                left++;
+                //临界值判断，大盒子不带边框-小盒子带边框的
+                if (left > obj1.clientWidth - obj2.offsetWidth) {
+                    fx = !fx;
+                }
+            } else {
+                left--;
+                if (left <= 0) {
+                    fx = !fx;
+                }
+            }
+
+            if (ft) {
+                top++;
+                //临界值判断，大盒子不带边框-小盒子带边框的
+                if (top > obj1.clientHeight - obj2.offsetHeight) {
+                    ft = !ft;
+                }
+            } else {
+                top--;
+                if (top <= 0) {
+                    ft = !ft;
+                }
+            }
+
+            obj2.style.top = top + "px";
+            obj2.style.left = left + "px";
+
+            boxR = boxNode.offsetWidth / 2;
+            boxR2 = boxNode1.offsetWidth / 2;
+            boxTop = boxNode.offsetTop + boxR;
+            boxTop2 = boxNode1.offsetTop + boxR2;
+            boxT = boxTop - boxTop2;
+            boxLeft = boxNode.offsetLeft + boxR;
+            boxLeft2 = boxNode1.offsetLeft + boxR2;
+            boxL = boxLeft2 - boxLeft;
+            var sqrt=Math.sqrt((boxT * boxT) + (boxL * boxL))
+            if (sqrt <= (boxR+boxR2)) {
+                if (flag) {
+                    boxNode.style.backgroundColor = 'rgb(' + Math.floor(Math.random() * 266) + ',' + Math.floor(
+                            Math
+                            .random() * 266) + ',' +
+                        Math.floor(Math.random() * 266) + ')';
+                    boxNode1.style.backgroundColor = 'rgb(' + Math.floor(Math.random() * 266) + ',' + Math
+                        .floor(
+                            Math.random() * 266) + ',' +
+                        Math.floor(Math.random() * 266) + ')';
+                   
+                    flag=!flag;
+                }
+            } else {
+                flag = !flag;
+            }
+        }, 1)
+    }
+</script>
+
+</html>

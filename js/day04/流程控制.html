@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    /*  求整数1～100的累加值，但要求碰到个位为3的数则停止累加
+        求整数1～100的累加值，但要求跳过所有个位为3的数
+        求1-100之间不能被7整除的整数的和（用continue）
+        求200-300之间所有的奇数的和（用continue）
+        求200-300之间第一个能被7整数的数（break） */
+
+        // 求整数1～100的累加值，但要求碰到个位为3的数则停止累加
+        var i=0,sum=0;
+        while(i<=100){
+            if(i%10===3){
+                sum+=i;
+                break;
+            }
+            i++;
+        }
+        console.log(sum);
+        //求整数1～100的累加值，但要求跳过所有个位为3的数
+        var sum=0;
+        for(var i=0;i<=100;i++){
+            if(i%10==3){
+                continue;
+            }
+            sum+=i;
+        }
+        console.log(sum);
+        // 求1-100之间不能被7整除的整数的和
+        var sum=0;
+        for(var i=0;i<=100;i++){
+            if(i%7===0){
+                continue;
+            }
+            sum+=i;
+        }
+        console.log(sum);
+        // // 求200-300之间所有的奇数的和（用continue）
+        var sum=0;
+        for(var i=200;i<=300;i++){
+            if(i%2===0){
+                continue;
+            }
+            sum+=i;
+        }
+        console.log(sum);
+        // //求200-300之间第一个能被7整数的数（break）
+        for(var i=200;i<=300;i++){
+            if(i%7!==0){
+                console.log(i);
+                break;
+            }          
+        }
+       
+    </script>
+</body>
+</html>

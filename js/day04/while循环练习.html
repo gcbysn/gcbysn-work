@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //1-100的累加和
+        
+        //声明初始变量i，num
+        var i=0,num=0;
+        while(i<=100){
+            num+=i; //累加和
+            i++ //i自加
+        }
+        console.log(num)
+
+        var i=1;
+        //1-100中能被3整除的数
+        while(i<=100){
+            //判断i模除3是否余0
+            if(i%3===0){
+                console.log(i)//余0则打印输出i
+            }
+            i++;
+        }
+
+
+        var i=0,num=0;
+        do {
+            num+=i; //累加和
+            i++ //i自加
+        } while (i<=100);
+        console.log(num)
+
+        var i=0;
+        do {
+            ++i;
+            if(i%3===0){
+                console.log(i)
+            }
+        } while (i<=100);
+
+    </script>
+</body>
+</html>

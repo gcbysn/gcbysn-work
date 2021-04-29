@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul li{
+            background-color: green;;
+            border:1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <script>
+        //获取所有li标签
+        var liNodes=document.getElementsByTagName("li");
+        //循环遍历li
+        for(var i=0;i<liNodes.length;i++){
+            //给所有的li标签添加rel标记
+            liNodes[i].setAttribute("rel","1");
+            //给所有的li标签绑定点击事件
+            liNodes[i].onclick=function(){
+                //判断当前点击的li标签的标记是否为1
+                if(this.getAttribute("rel")==="1"){
+                    //为1则将当前li标签的背景色变为红色
+                    this.style.backgroundColor="red";
+                    //改变当前li的标记为2
+                    this.setAttribute("rel","2");
+                }else{
+                    //当前点击的li标签标记不为1则变为绿色
+                    this.style.backgroundColor="green";
+                    //将点击后的li标签标记改回1
+                    this.setAttribute("rel","1");
+                }  
+            }
+        }
+    </script>
+</body>
+</html>

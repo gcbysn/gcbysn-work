@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #outer {
+            width: 700px;
+            margin: 50px auto;
+            border: 1px solid #000;
+            overflow: hidden;
+        }
+
+        #con1 {
+            width: 300px;
+            height: 400px;
+            float: left;
+            background-color: #4c71ff;
+        }
+
+        f #con2 {
+            width: 300px;
+            height: 400px;
+            float: right;
+            background-color: #4c71ff;
+        }
+
+        #controls {
+            width: 100px;
+            height: 400px;
+            float: left;
+            background-color: #2ba5eb;
+            text-align: center;
+        }
+
+        #con1 .red,
+        #con2 .red {
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="outer">
+        <ul id="con1">
+            <li>我是con1的内容1</li>
+            <li>我是con1的内容2</li>
+            <li>我是con1的内容3</li>
+            <li>我是con1的内容4</li>
+        </ul>
+        <div id="controls">
+            <button id="right"> 向右 </button><br>
+            <button id="left"> 向左 </button>
+        </div>
+        <ul id="con2">
+            <li>我是con2的内容1</li>
+            <li>我是con2的内容2</li>
+            <li>我是con2的内容3</li>
+            <li>我是con2的内容4</li>
+        </ul>
+    </div>
+    <script>
+        //获取元素
+        var conNode2 = document.querySelector('#con2');
+        var conNode1 = document.querySelector('#con1');
+        var liNodes_1 = null;
+        var liNodes_2 = null;
+        var rightNdoe = document.querySelector('#right');
+        var leftNode = document.querySelector('#left');
+
+        liNodes_1 = document.querySelectorAll('#con1 li');
+        liNodes_2 = document.querySelectorAll('#con2 li');
+
+        //将给点击的元素变色加自定义属性封装成一个函数
+        function li(obj) {
+            obj.forEach(function (item) {
+                //循环绑定点击事件
+                item.onclick = function () {
+                    //给点击的元素添加自定义属性及改变背景色
+                    item.setAttribute('rel', '1');
+                    item.style.backgroundColor = "red";
+                }
+            })
+        }
+
+        li(liNodes_1);
+        li(liNodes_2);
+        //将对比两边元素是否有自定义属性，并将拥有的添加到另外一边 封装成函数
+        function bj(obj1,obj2){
+            //循环遍历
+            obj1.forEach(function (item) {
+                //判断是否拥有自定义属性并且值为1
+                if (item.getAttribute('rel') === '1') {
+                    //将拥有自定义属性的元素添加到另外一边并且将背景色设置为透明
+                    obj2.appendChild(item);
+                    item.style.backgroundColor = "transparent"
+                    //添加过去后移除自定义属性
+                    item.removeAttribute('rel');
+                }
+            })
+        }
+        //给按钮绑定点击事件
+        rightNdoe.onclick = function () {
+            //循环开始前，先获取所有的li标签
+            liNodes_1 = document.querySelectorAll('#con1 li');
+            bj(liNodes_1,conNode2)
+        }
+        //给按钮绑定点击事件
+        leftNode.onclick = function () {
+            //循环开始前，先获取所有的li标签
+            liNodes_2 = document.querySelectorAll('#con2 li');
+            bj(liNodes_2,conNode1);
+        }
+    </script>
+</body>
+
+</html>

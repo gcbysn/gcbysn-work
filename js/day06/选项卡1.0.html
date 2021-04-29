@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .tab {
+            width: 600px;
+            border:1px solid black;
+            margin: 50px auto;
+        }
+
+        .title {
+            display: flex;
+        }
+
+        .title>h2 {
+            width: 200px;
+            border: 1px solid #000;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            font-size: 24px;
+            background-color: azure;
+        }
+
+        .title>h2.active {
+            background-color: red;
+            color: #fff;
+        }
+
+        .content>li {
+            height: 400px;
+            border:1px solid black;
+            line-height: 400px;
+            text-align: center;
+            font-size: 40px;
+            display: none;
+        }
+
+        .content>li.show {
+            display: block;
+        }
+       
+    </style>
+</head>
+
+<body>
+    <div class="tab">
+        <div class="title">
+            <h2 class="active">标题一</h2>
+            <h2>标题二</h2>
+            <h2>标题三</h2>
+        </div>
+        <ul class="content">
+            <li class="show">内容一</li>
+            <li>内容二</li>
+            <li>内容三</li>
+        </ul>
+    </div>
+    <script>
+        //先获取所有的h2和li
+        var h2Nodes=document.querySelectorAll(".title h2");
+        var liNodes=document.querySelectorAll(".content li");
+        //循环遍历所有的h2标签
+        for(var i=0;i<h2Nodes.length;i++){
+            //给每个h2元素对象拓展index属性
+            h2Nodes[i].index=i;
+            //给每个h2标签绑定点击事件
+            h2Nodes[i].onclick=function(){
+                //点击再次循环遍历所有的h2和li
+                for(var i=0;i<h2Nodes.length;i++){
+                    //移除每个h2的class属性
+                    h2Nodes[i].classList.remove("active");
+                    //移除每个li的class属性
+                    liNodes[i].classList.remove("show");
+                }
+                //this指向当前点击元素，给当前点击元素添加class属性，值为active
+                this.classList.add("active");
+                //通过this.index得到对应li下标，然后通过下标给li添加class属性，值为show
+                liNodes[this.index].classList.add("show");
+            }
+        }
+
+
+      
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            100以内所有的质数，一般从2开始
+            质数：只能被1和自身整除        
+        */
+        //声明一个数组保存100以内的质数
+        var arr = [];
+        for (var i = 2; i <= 100; i++) {
+            //将2-100以内的数存入数组
+            arr.push(i);
+            //存入一个数则开始循环判断是否可以被除自身以外整除
+            for (var j = 2; j < i; j++) {
+                if (i % j === 0) {
+                    //将这个数从数组中删除
+                    arr.pop();
+                    //跳出内循环
+                    break;
+                }
+            }
+        }
+        console.log(arr)
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul id="box">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <script>
+        /* 
+            apply和call类似
+                除了给参数不同，其他一模一样
+                    给调用apply的函数传参的时候，是吧所需要的参数全部
+                    放在一个数组中，当作apply的第二个参数传入
+                
+                    obj.fn(1,2,3)
+                    var arr=[1,2,3]
+                    obj.fn.apply(o,arr);
+        */
+        var obj = {
+            name: "zhangsan",
+            fn: function (a, b) {
+                console.log(a + b);
+                return this;
+            }
+        }
+
+        console.log(obj.fn.apply(window, [1, 2])); //window 3
+        console.log(obj.fn.apply(null, [1, 2])); //window 3
+        console.log(obj.fn.apply(undefined, [1, 2])); //window 3
+        console.log(obj.fn.apply(1, [1, 2])); //Number 3
+        console.log(obj.fn.apply('1', [1, 2])); //String 3
+        console.log(obj.fn.apply(true, [1, 2])); //Boolean 3
+        console.log(obj.fn.apply([], [1, 2])); //Array 3
+        console.log(obj.fn.apply({}, [1, 2])); //Object 3
+        console.log(obj.fn.apply(function () {}, [1, 2])); //当前函数 3
+        console.log(obj.fn.apply(new Date(), [1, 2])); //当前对象 
+    </script>
+</body>
+
+</html>

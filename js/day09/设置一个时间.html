@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            设置和获取一个未来或者过去的时间
+            字符串表示法
+            new Date("2021-6-14 0:0:0");时间格式和范围要书写正确
+
+            传参数表示
+            new Date()：注意，月份是从0开始的 0表示1月
+            时间范围超出会自动向前递增时间
+
+            时间戳表示法
+            new Date()在new Date中传入一个时间戳 会把这个时间戳添加
+            在计算机元年上得到一个时间
+        */
+
+        var date1=new Date("2021-5-1 0:0:0");
+        var date1=new Date("2021-5-1");
+        console.log(date1);
+
+        var date2=new Date(2021,4,1,8,0,0,0);
+        console.log(date2);
+
+        var date2=new Date(8345454307828);
+        console.log(date2)
+    </script>
+</body>
+</html>

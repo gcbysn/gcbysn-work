@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            do{语句}while{判断}
+                先执行语句 然后在判断 然后再执行语句 然后再判断
+
+            do...while 和while
+                do...while先执行一次，然后再判断，至少执行一次
+                while 先判断 在执行 ，至少执行0次
+
+
+        */
+        // 用 do...while() 循环来计算1 + 2 + 3...+98 + 99 + 100 的值。
+        var i = 0;
+        var sum = 0;
+        do {
+            sum += i;
+            i++;
+        } while (i <= 100);
+        console.log(sum)
+    </script>
+</body>
+</html>

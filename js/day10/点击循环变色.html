@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #app{
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+
+    </div>
+    <script>
+        var appNode = document.getElementById("app");
+        /* var flag = true; //默认true是粉色
+        appNode.onclick = function () {
+            if (flag) {
+                appNode.style.background = "red";
+            } else {
+                appNode.style.background = "pink";
+            }
+            flag = !flag;
+        } */
+
+
+
+        var count = 0; //默认0是粉色
+        appNode.onclick = function () {
+            count++;
+            switch (count % 3) {
+                case 0:
+                    appNode.style.background = "pink";
+                    break;
+                case 1:
+                    appNode.style.background = "red";
+                    break;
+                case 2:
+                    appNode.style.background = "yellow";
+                    break;
+            }
+
+        }
+    </script>
+</body>
+
+</html>

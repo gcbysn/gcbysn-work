@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+        其他类型转布尔值：  
+           可以使用Boolean()方法 把其他类型转换为布尔值
+            number转boolean
+            0为false  非0为true  NaN为false
+
+            string转boolean
+            空为false  非空为true
+
+            null和undefined都是false
+
+            object类型转Boolean都是true
+        
+        */
+       var a=0,b=1,c="",d="hello",e=null,f=undefined,g={},h=NaN;
+       console.log(Boolean(a))//false
+       console.log(Boolean(b))//true
+       console.log(Boolean(c))//false
+       console.log(Boolean(d))//true
+       console.log(Boolean(e))//false
+       console.log(Boolean(f))//false
+       console.log(Boolean(h))//false
+       console.log(Boolean(g))//true
+
+       /* 
+            其他类型转number
+                可以使用Number()方法 把其他类型转换为数字
+                String转Number
+                    如果字符串是纯数字的则直接转换为对应的数字
+                    如果字符串时候空 或者只有空白字符 则直接转换为0
+                    其他情况转为NaN
+                Boolean转Number true为1  false为0
+                null为0  undefined为NaN
+                Object类型转Number
+                除了特殊情况都是NaN
+                    空数组为0
+                    数组长度为1 且是一个数字或者字符串类型的数字的时候，转为对应的数字
+
+       */
+
+       console.log(Number('123'))//123
+       console.log(Number(' '))//0
+       console.log(Number(''))//0
+       console.log(Number('a123'))//NaN
+       console.log(Number(true))//1
+       console.log(Number(false))//0
+       console.log(Number(null))//0
+       console.log(Number(undefined))//NaN
+       console.log(Number({}))//NaN
+       console.log(Number([]))//0
+       console.log(Number([1]))//1
+       console.log(Number(["1"]))//1
+       console.log(Number(["a"]))//NaN
+
+       /* 
+            其他类型转String
+                String方法
+                toString方法  
+                 除了null和undefined两个以外，其他类型都有自己的toString方法
+       */
+        console.log(String(1234))
+        console.log(String(NaN)) //'NaN'
+        console.log(String(Infinity)) //'Infinity'
+        console.log(String(true))//'true'
+        console.log(String(false))//'false'
+        console.log(String(null))//"null"
+        console.log(String(undefined))//'undefined'
+        console.log(String([])) //''
+        console.log(String([2])) //'2'
+        console.log(String(["a"])) //'a'
+        console.log(String({})) //[object Object]
+    </script>
+</body>
+
+</html>

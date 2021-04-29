@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="checkDemo.css" />
+  <script src="jquery-1.12.4.js"></script>
+
+</head>
+
+<body>
+  <div class="wrap">
+    <div>
+      <input type="button" value="添加数据" id="j_btnAddData" class="btnAdd" />
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>课程名称</th>
+          <th>所属学院</th>
+          <th>已学会</th>
+        </tr>
+      </thead>
+      <tbody id="j_tb">
+        <tr>
+          <td>JavaScript</td>
+          <td>前端学院</td>
+          <td><a href="javascript:;" class="get">GET</a></td>
+        </tr>
+        <tr>
+          <td>css</td>
+          <td>前端学院</td>
+          <td><a href="javascript:;" class="get">GET</a></td>
+        </tr>
+        <tr>
+          <td>html</td>
+          <td>前端学院</td>
+          <td><a href="javascript:;" class="get">GET</a></td>
+        </tr>
+        <tr>
+          <td>jQuery</td>
+          <td>前端学院</td>
+          <td><a href="javascript:;" class="get">GET</a></td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+  <div id="j_mask" class="mask"></div>
+  <div id="j_formAdd" class="form-add">
+    <div class="form-add-title">
+      <span>添加数据</span>
+
+      <div id="j_hideFormAdd">x</div>
+    </div>
+    <div class="form-item">
+      <label class="lb" for="j_txtLesson">课程名称：</label>
+      <input class="txt" type="text" id="j_txtLesson" placeholder="请输入课程名称">
+    </div>
+    <div class="form-item">
+      <label class="lb" for="j_txtBelSch">所属学院：</label>
+      <input class="txt" type="text" id="j_txtBelSch" placeholder="请输入所属学院">
+    </div>
+    <div class="form-submit">
+      <input type="button" value="添加" id="j_btnAdd">
+    </div>
+  </div>
+  <script>
+    $(function () {
+      $("#j_btnAddData").click(function () {
+        $("#j_mask").toggle();
+        $("#j_formAdd").toggle();
+      })
+      $("#j_btnAdd").click(function () {
+        var str = $("#j_txtBelSch").val().trim();
+        var str1 = $("#j_txtLesson").val().trim()
+
+        if (!str || !str1) {
+          alert('请输入数据')
+        } else {
+          $("#j_mask").toggle();
+          $("#j_formAdd").toggle();
+          
+          var str = ' <tr>\
+          <td>' + $("#j_txtBelSch").val() + '</td>\
+          <td>' + $("#j_txtLesson").val() + '</td>\
+          <td>\
+            <a href="javascript:;" class="get">GET</a>\
+            </td>\
+          </tr>'
+          $('#j_tb').append(str)
+          //添加完成后清空输入框的内容
+          $("#j_txtLesson").val('');
+          $("#j_txtBelSch").val('');
+        }
+      })
+      $('#j_hideFormAdd').click(function () {
+        $("#j_mask").toggle();
+        $("#j_formAdd").toggle();
+      })
+
+      $("#j_tb").click(function (e) {
+        e.preventDefault();
+        //使用事件委托对未来的元素操作
+        $(e.target).parent().parent().remove();
+      })
+    });
+  </script>
+
+</body>
+
+</html>

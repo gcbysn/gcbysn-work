@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+
+    </div>
+    <script>
+        /* 
+            dom0绑定事件方法
+                ele.on+事件名 =fn;
+                当元素的时间触发，就会调用后面的函数
+
+                相当于给元素的时间属性赋值了一个方法，当事件调用的时候，就会
+                自动的调用这个事件方法
+
+            click事件：左键单击
+                触发条件：鼠标左键单次点击 在当前元素上按下，并在当前元素上抬起，即可算一次点击
+            dblclick：左键双击
+                两次单击间隔 在300ms以内
+            contentmenu：右键单击
+
+
+
+         */
+
+            var appNode=document.getElementById("app");
+            //默认情况下，本身元素就有这个事件属性 值为null
+            appNode.onclick=null;
+
+            //当我们想要绑定事件的时候 只需要给这个事件属性赋值一个函数即可
+            appNode.onclick=function(){
+                alert("oncontextmenu");
+            }
+    </script>
+</body>
+</html>

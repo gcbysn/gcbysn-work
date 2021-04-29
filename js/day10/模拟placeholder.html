@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="ipt" value="请输入账户名">
+    <script>
+        /* 
+            获取焦点：当表单从未选中状态变成可输入状态的时候，叫做获取焦点
+            失去焦点：当表单从输入状态变成未选中的时候，叫做失去焦点
+                
+            获取焦点：focus
+            失去焦点：blur
+        */
+        var iptNode=document.getElementById("ipt");
+
+        iptNode.onfocus=function(){
+            if(this.value==="请输入账号名"){
+                this.value="";
+            }
+        }
+
+
+        iptNode.onblur=function(){
+            if(this.value===""){
+                this.value="请输入账户名"
+            }
+        }
+    </script>
+</body>
+</html>

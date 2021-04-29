@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+
+    </div>
+    <button id="btn">点击</button>
+    <script>
+        /*   得到[a,b)的随机数
+            得到一个随机字符串
+            如何得到一个随机的IP地址：0.0.0.0~255.255.255.255
+            有一半的几率在做什么事情，另一半的几率在做另一件事 
+            求10-20之间的随机数
+            随机生成颜色RGB
+        */
+        //得到[a,b)的随机数
+        function radom(a, b) {
+            return Math.floor(Math.random() * (b - a) + a)
+        }
+        console.log(radom(12, 15))
+        //得到一个随机长度为10字符串
+        var str = "";
+
+        function radomStr(num) {
+            for (var i = 0; i < num; i++) {
+                str += radom(0, 36).toString(36);
+            }
+        }
+        radomStr(10);
+        console.log(str)
+        //如何得到一个随机的IP地址：0.0.0.0~255.255.255.255
+        var str2 = "";
+
+        function radomIP() {
+            for (var i = 0; i < 4; i++) {
+                str2 += radom(0, 256) + "."
+            }
+            return str2;
+        }
+        radomIP()
+        var str3 = str2.slice(0, str2.length - 1)
+        console.log(str3);
+        //有一半的几率在做什么事情，另一半的几率在做另一件事
+        var cont = Math.random();
+
+        function radomSun(cont) {
+            if (cont > 0.4) {
+                console.log("吃饭");
+            } else {
+                console.log("睡觉");
+            }
+        }
+        radomSun(cont);
+        //求10-20之间的随机数
+        console.log(radom(10, 20));
+        //生成随机颜色
+        var boxNode = document.getElementById("box");
+        var btnNode = document.getElementById("btn");
+        var str2 = "";
+        function radomColor() {
+            for (var i = 0; i < 3; i++) {
+                str2 += radom(0, 256) + ","
+            }
+            return str2;
+        }
+        btnNode.onclick = function () {
+            str2="";
+            radomColor()
+            var str3 = str2.slice(0, str2.length - 1)
+            // console.log(str3)
+            boxNode.style.backgroundColor = "rgb(" + str3 + ")";
+        }
+    </script>
+</body>
+
+</html>

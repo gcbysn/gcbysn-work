@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            已知一个url地址
+                http://www.baidu.com?user=laowang&pass=123456&sex=nan;
+            请把查询字符串的内容以对象的形式表示出来
+                得到：{
+                    user:"laowang",
+                    pass:"123456",
+                    sex:"nan"
+                }
+        */
+        var str = "http://www.baidu.com?user=laowang&pass=123456&sex=nan";
+        //查找字符？的下标
+        var num = str.indexOf("?");
+        //使用slcie方法截取？之后的字符
+        var str1 = str.slice(num + 1, str.length);
+        //声明一个正则
+        var reg = /&/gi;
+        // var arr=str1.split("&")
+        //使用replace方法将&替换成=
+        var str2 = str1.replace(reg, "=")
+        //使用split方法将字符以=分割存入数组中
+        var arr2 = str2.split("=")
+        var obj = {};
+        //循环拼接字符
+        for (var i = 0; i < arr2.length; i = i + 2) {
+            obj[arr2[i]] = arr2[i + 1];
+        }
+        // console.log(arr2)
+        // console.log(str2)
+        console.log(obj)
+
+        /* 
+            已知一个查询字符串对象
+            {
+                user:"laowang",
+                pass:"123456",
+                sex:"nan"
+            }
+            已知url地址是http://www.baidu.com;
+            请把url地址和查询字符串组合 形成真正的地址：http://www.baidu.com?user=laowang&pass=123456&sex=nan;
+             
+        */
+        var obj = {
+            user: "laowang",
+            pass: "123456",
+            sex: "nan"
+        };
+        var str="http://www.baidu.com";
+            str+="?"
+        //循环遍历对象obj
+        for (var key in obj) {
+            //间对象的属性和值拼接到字符串中
+            str+=key+"="+obj[key]+"&";
+            // console.log(key,obj[key])
+        }
+       str1 = str.slice(0,str.length-1)
+        console.log(str1)
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="box">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <!-- <li>4</li> -->
+        <li>5</li>
+    </ul>
+    <script>
+        /* 
+            在网页中所有对象和内容都被称为节点
+            如文档节点 元素节点 文本节点 属性节点 注释节点等
+            节点(Node)是dom最基本的单元，并2派生出不同类型的节点
+            他们共同构成了文档的树形模型
+        */
+       /* 
+            节点的类型名称和值
+                childNodes
+
+                nodeType:节点类型
+                文本节点：3
+                元素节点：1
+                文档节点：9
+                注释节点：8
+                属性节点：2
+
+                nodeName:节点的名称
+                文本节点：#text
+                元素节点：大写的标签名
+                文档节点：#document
+                注释节点：#comment
+                属性节点：key
+
+                nodeValue：节点的值
+                文本节点:文本的内容
+                元素节点：null
+                文档节点：null
+                属性节点：value
+
+        
+       */
+
+       var boxNode = document.getElementById('box');
+        //获取box的所有的子节点
+        var boxNodeChildren = boxNode.childNodes;
+        console.log(boxNodeChildren) //得到NodeList对象 是一个类数组
+
+
+        //自己创建一个属性节点
+        var attr = document.createAttribute("hello");
+        attr.value = "world";
+        console.log(attr);
+        //文本节点
+        console.log(boxNodeChildren[0].nodeType) //3
+        console.log(boxNodeChildren[0].nodeName) //#text
+        console.log(boxNodeChildren[0].nodeValue) //节点的内容
+
+
+        //元素节点
+        console.log(boxNodeChildren[1].nodeType) //1
+        console.log(boxNodeChildren[1].nodeName) //LI
+        console.log(boxNodeChildren[1].nodeValue) //null
+
+        //文档节点
+        console.log(document.nodeType) //9
+        console.log(document.nodeName) //#document
+        console.log(document.nodeValue) //null
+
+        //注释节点
+        console.log(boxNodeChildren[5].nodeType) //8
+        console.log(boxNodeChildren[5].nodeName) //#comment
+        console.log(boxNodeChildren[5].nodeValue) //注释的内容
+
+        //属性节点
+        console.log(attr.nodeType) //2
+        console.log(attr.nodeName) //key
+        console.log(attr.nodeValue) //value
+    </script>
+</body>
+</html>

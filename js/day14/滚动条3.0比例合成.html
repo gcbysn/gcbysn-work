@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/scroll.css" type="text/css">
+    <style>
+        .bar {
+            height: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app">
+
+    </div>
+    <div class="scroll">
+        <div class="bar">
+        </div>
+    </div>
+    <script>
+        var appNode = document.querySelector('.app');
+        var barNode = document.querySelector('.bar');
+        var scrollNode = document.querySelector('.scroll');
+
+        for (var i = 0; i < 200; i++) {
+            appNode.innerHTML += i + "<br>";
+        }
+        // console.log(barNode);
+
+        /* 
+            文档高度/窗口的高度=滚动条高度/滑动高度
+            滑块高度=滚动条高度/(文档高度/窗口的高度)
+
+            滚动条高度=窗口的高度
+        */
+
+        //文档高度
+        var wenHeight = appNode.clientHeight;
+        //窗口的高度
+        var skHeight = document.documentElement.offsetHeight;
+        //文档高度/浏览器视口高度
+        var scle = wenHeight / skHeight;
+        //滑块高度
+        var barNodeHeight = skHeight / scle;
+        barNode.style.height = barNodeHeight + "px";
+
+
+        barNode.onmousedown = function (e) {
+            //阻止默认选中事件
+            e.preventDefault()
+            /* 
+                e.clientY 鼠标距离浏览器上边的距离
+                boxNode.offsetTop  div距离最近父级（文档）上边的距离
+            */
+            //按下时的距离
+            var downMove = {
+                top: e.clientY - barNode.offsetTop
+            }
+            document.onmousemove = function (e) {
+                //移动时的距离
+                var move = {
+                    top: e.clientY - downMove.top
+                }
+                /* 
+                    document.documentElement.clientHeight 窗口的高度
+                    boxNode.offsetHeight div带边框的高度
+                */
+                if (move.top <= 0) {
+                    move.top = 0;
+                } else if (move.top >= document.documentElement.clientHeight - barNode.offsetHeight) {
+                    move.top = document.documentElement.clientHeight - barNode.offsetHeight;
+                }
+                //滚动距离=滑块移动距离*比例
+                var moveHeight = move.top * scle;
+                // console.log(maxHeight);
+                barNode.style.top = move.top + "px";
+                appNode.style.top = -moveHeight + "px";
+            }
+            document.onmouseup = function () {
+                document.onmousemove = null;
+                document.onmouseup = null;
+            }
+        }
+    </script>
+</body>
+
+</html>

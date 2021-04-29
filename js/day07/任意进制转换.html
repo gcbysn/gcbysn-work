@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 栈操作练习  任意进制转换
+          // 栈操作练习 二进制转换
+          function oB(m,n){
+            //保存余数的数组
+            var arr=[];
+            //保存余数
+            var b=0;
+            //返回的二进制
+            var str="";
+            var strA="0123456789abcdefghijklmnopqrstuvwxzy";
+            console.log(strA.length)
+            while(m>0){
+                b=m%n;
+                arr.push(b);
+                m=parseInt(m/n);
+                // console.log(arr)
+            }
+
+            //for循环遍历arr数组
+            // for (var i = arr.length-1; i>=0; i--) {
+            //     str+=arr[i];
+            // }
+            while(arr.length>0){
+                str+=strA[arr.pop()];
+            }
+            return str;
+        }
+        console.log(oB(255,16));
+    </script>
+</body>
+</html>

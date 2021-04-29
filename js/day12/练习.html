@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">注册成功</button>
+    <p id="con"></p>
+    <script>
+        var oBtn = document.getElementById('btn');
+        var oCon = document.getElementById('con');
+        //点击注册成功 开始倒计时跳转
+        var time = 3;
+        oBtn.onclick = function () {
+            oCon.textContent = time + "秒后自动跳转"
+            setInterval(function () {
+                time--;
+                if (time <= 0) {
+                    //跳转到百度
+                    // window.open("http://www.baidu.com","_self")
+                    // location.href = "http://www.baidu.com"
+                    // location.assign("http://www.baidu.com")
+                    // location.replace("http://www.baidu.com")
+                }
+                oCon.textContent = time + "秒后自动跳转"
+            }, 1000)
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .app{
+            height: 200px;
+            margin-left: 400px;
+            border: 1px solid black;
+        }
+        .con{
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+            overflow: auto;
+        }
+        .con .box{
+            height: 1000px;
+        }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <!-- <div class="con">
+            <div class="box"></div>
+        </div> -->
+    </div>
+    <script>
+        /* 
+            scroll事件
+                某个元素的滚动条事件
+                    绑定给某个元素，只要滚动条发生变化，则触发事件
+            
+                系统滚动条的事件
+                    绑定给widow或者document即可
+         */
+        
+         var appnode =   document.querySelector('.app')
+
+         console.log(appnode.offsetLeft)   ;
+    </script>
+</body>
+</html>

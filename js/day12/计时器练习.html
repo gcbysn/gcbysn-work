@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: fixed;
+            left: 0;
+            top: 100px;
+        }
+    </style>
+</head>
+<body>
+    <p id="con">敌军还有<span id="num">4</span> 秒到达战场</p>
+    <button id="btn">点击我</button>
+    <div id="box"></div> 
+    <script>
+        var numNode = document.getElementById('num');
+        var conNode = document.getElementById('con');
+
+        var boxNode = document.getElementById('box');
+        var btnNode = document.getElementById('btn');
+        var boxLeft = 0;
+        var boxMoveTimer = null;
+        //定义一个变量赋初始值
+        var num = 4;
+
+        var timer = setInterval(function () {
+            num--;
+            //判断临界值
+            if (num <= 0) {
+                conNode.textContent = "全军出击";
+                //计算清掉计时器了 也要把当次的计时器内容执行完成
+                clearInterval(timer);
+            }
+            console.log("看" + num)
+            numNode.textContent = num;
+        }, 1000)
+
+
+        btnNode.onclick = function () {
+            //每次点击的时候，把上一次的计时器给清掉，然后重新添加
+            clearInterval(boxMoveTimer)
+
+            //动画：每隔多久执行一次移动
+            boxMoveTimer = setInterval(function () {
+                //因为left属性无法自己运算，所以先使用一个变量保存当前的left属性，然后再赋值
+                boxLeft += 2;
+
+                if (boxLeft >= 1000) {
+                    //在临界值的时候，再次确认赋值临界值
+                    boxLeft = 1000;
+                    clearInterval(boxMoveTimer)
+                }
+                boxNode.style.left = boxLeft + "px";
+            }, 1000 / 60)
+        }
+    </script>
+</body>
+</html>

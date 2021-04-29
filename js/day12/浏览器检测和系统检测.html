@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            BOM中window是顶层对象：
+                - navigator:客户端信息
+                - location:页面地址url信息
+                - history:浏览器历史记录信息
+                - document：文档信息（DOM的顶层对象）
+        
+
+            window.navigator:
+                - userAgent:客户端信息
+                - platform：操作系统
+                - onLine：是否连接网络
+        */
+
+
+        console.log(navigator);
+
+        //浏览器识别码
+        //Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36
+        console.log(navigator.userAgent);
+
+        //浏览器操作系统
+        console.log(navigator.platform); //win32
+
+        //浏览器是否连接网络
+        console.log(navigator.onLine); //true
+    </script>
+</body>
+
+</html>

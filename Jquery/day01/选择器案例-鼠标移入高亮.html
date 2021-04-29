@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    <style>
+      .active{
+        background-color: pink;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box">
+      <ul>
+        <li>我是li元素1</li>
+        <li>我是li元素2</li>
+        <li>我是li元素3</li>
+        <li>我是li元素4</li>
+        <li>我是li元素5</li>
+        <li>我是li元素6</li>
+        <li>我是li元素7</li>
+        <li>我是li元素8</li>
+      </ul>
+    </div>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+      $('li').mouseenter(function(){
+          $(this).addClass('active').siblings().removeClass('active');
+      })
+    </script>
+  </body>
+</html>

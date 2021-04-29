@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+        给定一个字符串如：“abaasdffggghhjjkkgfddsssss3444343”问题如下：
+        字符串的长度
+        取出指定位置的字符，如：0,3,5,9等
+        查找指定字符是否在以上字符串中存在，如：i，c ，b等
+        替换指定的字符，如：g替换为22,ss替换为b等操作方法
+        截取指定开始位置到结束位置的字符串，如：取得1-5的字符串
+        找出以上字符串中出现次数最多的字符和出现的次数
+        遍历字符串，并将遍历出的字符两头添加符号“@”输出至当前的文档页面。
+         */
+        var str = "abaasdffggghhjjkkgfddsssss3444343";
+        // 字符串的长度
+        var num = str.length;
+        console.log(num);
+        //取出指定位置的字符，如：0,3,5,9等
+        console.log(str[0], str[3], str[5], str[9]);
+        //查找指定字符是否在以上字符串中存在，如：i，c ，b等
+        var i = str.indexOf(i) > 0 ? true : false;
+        var c = str.indexOf(c) > 0 ? true : false;
+        var b = str.indexOf(b) > 0 ? true : false;
+        console.log(i, c, b)
+        //替换指定的字符，如：g替换为22,ss替换为b等操作方法
+        var reg=/g/gi;
+        var reg1=/ss/gi;
+        var str1=str.replace(reg,"22");
+        var str1=str1.replace(reg1,"b");
+        console.log(str1)
+        //截取指定开始位置到结束位置的字符串，如：取得1-5的字符串
+        var str2=str.slice(1,5)
+        console.log(str2)
+        //找出以上字符串中出现次数最多的字符和出现的次数
+        
+        
+        //使用split方法将字符串str转换为数组
+        var arr=str.split("");
+        //声明一个变量保存每个元素出现的次数
+        var cont=0;
+        //声明一个数组将每个元素出现的次数保存起来
+        var num=[];
+        //使用foreach方法循环遍历数组
+        arr.forEach(function (item, index, array) {
+            //for循环遍历当前元素是否与其他元素相等
+            for (var i = 0; i < arr.length; i++) {
+                if(item==arr[i]){
+                    cont++;//相等则累加
+                }
+            }
+            //加次数添加入数组num中
+            num.push(cont);
+            //将次数清空，
+            cont=0;
+        })
+        var max=num[0];
+        //使用foreach方法循环遍历数组找出最大值
+        num.forEach(function(item,index,array){
+            if(array[index]>max){
+                max=array[index];
+            }
+        })
+        //通过查找最大值得到下标
+        var k=num.indexOf(max)
+        // console.log(arr)
+        // console.log(num)
+        // console.log(max)
+        //输出结果
+        console.log(str[k],num[k])
+    </script>
+</body>
+
+</html>

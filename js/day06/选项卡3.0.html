@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .tab {
+            width: 600px;
+            border: 1px solid #000;
+            margin: 50px auto;
+        }
+
+        #title {
+            display: flex;
+        }
+
+        #title>h2 {
+            width: 198px;
+            border: 1px solid #000;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            font-size: 24px;
+            background-color: azure;
+        }
+
+        #title>h2.active {
+            background-color: red;
+            color: #fff;
+        }
+
+        #con>li {
+            height: 400px;
+            line-height: 400px;
+            text-align: center;
+            font-size: 40px;
+            display: none;
+        }
+
+        #con>li.show {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="tab">
+        <div id="title">
+            <h2 class="active">标题一</h2>
+            <h2>标题二</h2>
+            <h2>标题三</h2>
+        </div>
+        <ul id="con">
+            <li class="show">内容一</li>
+            <li>内容二</li>
+            <li>内容三</li>
+        </ul>
+    </div>
+    <script>
+        //获取h2及li标签集合
+        var h2Node = document.querySelectorAll("#title h2");
+        var liNode = document.querySelectorAll("#con li");
+        //将其封装成函数
+        function tab(obj,obj2) {
+            //循环遍历h2元素集合
+            for (var i = 0; i < obj.length; i++) {
+                //给每个h2元素绑定点击事件
+                obj[i].onclick = function () {
+                    //循环遍历h2元素集合
+                    for (var i = 0; i < obj.length; i++) {
+                        //判断当前点击的元素与哪一个h2元素全等
+                        if (this === obj[i]) {
+                            //给当前点击元素添加class
+                            this.classList.add("active");
+                            //给对应的li元素添加class
+                            obj2[i].classList.add("show");
+                        } else {
+                            //将不是当前点击的元素的class移除
+                            obj[i].classList.remove("active");
+                            obj2[i].classList.remove("show");
+                        }
+                    }
+                }
+            }
+        }
+        //调用tab函数
+        tab(h2Node,liNode);
+    </script>
+</body>
+
+</html>

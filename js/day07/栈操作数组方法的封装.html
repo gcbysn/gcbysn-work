@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         /* 
+            手写push
+            手写pop
+            peek:返回栈顶元素 不对栈做修改
+            isEmpty 判断栈中是否为空，返回布尔值
+            clear:清空整个栈
+        */
+       //创建一个数组
+        var arr = [1, 2, 3, 4];
+        //封装一个push函数
+        function push(arr, a) {
+            //将a赋值给数组的最后一位
+            arr[arr.length] = a;
+            //返回数组长度
+            return arr.length;
+        }
+        
+        var re = push(arr, 1);
+        console.log(arr, re);
+
+
+
+        function pop(arr) {
+            //先获得最后一个数组的值
+            var a = arr[arr.length - 1];
+            arr.length = arr.length - 1;
+            return a;
+        }
+        var re = pop(arr);
+        console.log(arr, re);
+
+        //返回栈顶元素（数组最后一个） 不对栈做修改
+        function peek(arr) {
+            return arr[arr.length - 1]
+        }
+        var re = peek(arr);
+        console.log(re);
+
+
+        function isEmpty(arr) {
+            //判断数组长度是否为0，并返回true或者false
+            return arr.length === 0;
+        }
+        var re = isEmpty(arr);
+        console.log(re);
+
+
+        //清空数组
+        function clear(arr) {
+            //将数组长度设为0
+            arr.length = 0;
+        }
+        clear(arr);
+        console.log(arr);
+    </script>
+</body>
+</html>

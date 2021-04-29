@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+
+    </div>
+    <script>
+        /* 
+            节流函数：
+                在规定时间内主要代码只执行一次，降低高频代码的执行
+        */
+        //初级版节流
+        /* var oBox = document.getElementById('box');
+        var lastTime = 0; //初始一个上一次执行的时间
+        oBox.onmousemove = function () {
+            //每次执行的时候，都要获取当前的时间戳
+            var nowTime = Date.now();
+            //设置一个看门狗，判断当前时间和上一次的时间的差是否小于100ms  如果小于则return退出不让执行核心代码
+            if (nowTime - lastTime < 100) {
+                return;
+            }
+            //当看门狗放行以后，当次的时间已经执行完毕，要把当次的事件改为上一次的事件
+            lastTime = nowTime;
+            //我们无法控制mousemove事件触发频率，但是我们可以控制事件中主要代码的执行频率
+            console.log(1);
+        } */
+
+
+        var boxNode = document.querySelector('.box');
+
+        //把事件函数独立出来，否则将会高频率的触发
+        function move(e) {
+            console.log('核心代码');
+            //核心代码可能需要this，但是这个函数并不是真正的事件函数，所以需要去throttle中处理一个this
+            console.log(this);
+            //核心代码肯还会需要event事件对象，但是这个函数并不是真正的事件函数，需要去throttle中处理
+
+            console.log(e);
+        }
+
+        boxNode.onmousemove = throttle(move, 1000)
+
+        /* 
+            throttle：节流函数
+                fn参数：要节流执行的核心代码函数
+                time：控制的间隔时间
+
+        */
+        function throttle(fn, time) {
+            //当绑定事件的时候，下初始化上一次的时间
+            var lastTime = 0;
+            //这个return的函数，就是真正的事件函数，所以这个函数肯定是高频触发的
+            return function () {
+                //看门
+                var nowTime = Date.now();
+
+                if (nowTime - lastTime < time) {
+                    return
+                }
+                //放行后把当前时间改为上一次的时间
+                lastTime = nowTime;
+                //调用fn的时候 还要把event事件对象传给fn
+                fn.call(this,arguments[0])
+            }
+        }
+    </script>
+</body>
+
+</html>

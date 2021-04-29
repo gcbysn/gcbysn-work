@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            call:
+                1.改变函数的this指向到第一个参数
+                2.调用函数
+                call的第一个参数分为3类 
+                1 window(null,undefined)
+                2.包装对象(Boolean string number)
+                3.对象类型
+        */
+
+        Function.prototype.myCall = function (context) {
+            //context如果不是对象类型，需要进行提前处理
+            if (context === null || context === undefined) {
+                //如果context是null或者undefined类型则把context变成window
+                context = window;
+            }
+            //因为call参数只有三类，已经处理了第一类，现在排除除了对象类型和function的其他的就是基本类型了
+
+            if (typeof context != 'object' && typeof context != 'function') {
+                //call方法可以将基本类型改变成包装对象
+                //所以使用object()方法将基本类型变成包装对象
+                context=Object(context);
+            }
+            //因为不知道会传入多少个参数所以可以使用arguments获取传入的除了第一个的其他实参
+            //将agrumnets转换成数组使用Array.from()方法,并使用slice方法截取除了第一个参数的其他参数
+            var newArray=Array.from(arguments).slice(1);
+
+            /* 
+                当前myCall的this指向就是调用mycall的函数，需要
+                把当前的this所代表的的函数fn中的this指向context
+
+                将mycall的this代表的函数 当成context对象的方法就可以
+
+                所以给context拓展一个方法 值为this代表的函数
+
+                为了预防拓展的方法和其本身的重名，就需要一个独一无二的值
+                之前学习的Date.now()获取一个时间戳就可以保证其值为独一无二
+
+            */
+           var f=Date.now().toString(36);
+           context[f]=this;
+
+           /* 
+                只要context调用了f方法 则f的this就指向了content，
+                因为f和fn是同一个函数，所以fn的this也指向了content
+           */
+          eval('context[f]('+newArray.toString()+')');
+
+
+          //将之前拓展的f方法删除
+          delete context[f];
+
+        }
+
+        /* 
+            函数 fn
+            对象 obj
+            需求 把fn的this指向obj对象
+            obj.f=fn
+            obj.f()
+
+        */
+        function fn(a, b) {
+            console.log(a + b);
+            console.log(this);
+        }
+        fn.myCall(null, 1, 2);
+        fn.myCall(undefined, 1, 2);
+        fn.myCall(1, 1, 2);
+        fn.myCall('1', 1, 2);
+        fn.myCall(true, 1, 2);
+        fn.myCall(Symbol(), 1, 2);
+        fn.myCall(1n, 1, 2);
+        fn.myCall(function () {}, 1, 2);
+        fn.myCall([], 1, 2);
+        fn.myCall({}, 1, 2);
+    </script>
+</body>
+
+</html>

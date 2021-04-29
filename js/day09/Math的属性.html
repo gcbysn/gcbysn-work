@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            Math对象是JavaScript的内置对象，提供一系列的数学常数和数学方法。Math对象只提供了静态的属性和方法，所以使用时，不需要实例化
+        
+        */
+
+        console.log(Math.PI);//π
+        console.log(Math.SQRT2);
+
+
+        //求半径10圆面积 和 周长
+        var r = 10;
+        var s = parseInt(r * r * Math.PI);
+        var c = parseInt(2 * Math.PI * r);
+        console.log(s, c);
+    </script>
+
+</body>
+
+</html>

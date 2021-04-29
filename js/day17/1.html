@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function throttle(fn, time) {
+            var lasttime = 0;
+            return function () {
+                var newtime = Date.now();
+                if (newtime - lasttime <= 100) {
+                    return
+                }
+                lasttime = newtime;
+
+                fn.call(this, arguments[0])
+
+            }
+        }
+
+
+        function dobunce(fn, time) {
+            var timer = null;
+            return function(){
+                clearTimeout(timer);
+
+                var _this=this;
+                var newArr=arguments[0];
+
+                timer=setTimeout(function(){
+                    fn.apply(_this,newArr)
+
+                },time)
+
+            }
+
+        }
+
+        function myNew(constr){
+            var obj={};
+
+            obj.__proto__=constr.prototype;
+
+            var arr=Array.from(arguments).slice(1);
+
+            var re=constr.apply(obj,arr);
+
+            if(typeof re==='object'&&re===null|| typeof re ==='function'){
+                return re;
+            }
+
+            return obj;
+
+        }
+
+        var arr=[1,2,9,46,5,8,88,32,34,35,6,4,68,69];
+        function quickSort(arr){
+            var center=arr.pop();
+
+            var left=[];
+            var right=[];
+
+            arr.forEach(function(item){
+                if(item<center){
+                    left.push(item)
+                }else{
+                    right.push(item)
+                }
+            })
+
+            var newArr=quickSort(left).concat(center,quickSort(right));
+
+            return newArr;
+
+        }
+
+
+        Student.prototype=new Person();
+        Student.prototype.constructor=Student;
+        Student.prototype.stduy=function(){
+            console.log('学习');
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        
+            Null类型中只有一个值
+            是一个空对象指针 typeof检测得到的是object
+            四种场景
+            1.当函数需要参数，当不给函数传递参数的时候，可以传递一个null
+            2.作为原型链的终点
+            3.当声明一个变量，但是暂时不需要赋值的时候，可以给当前变量赋值为null
+            4.当设置一个值是一个垃圾对象的时候，吧变量赋值为null       
+
+        */
+
+
+        // 当声明一个变量，但是暂时不需要赋值的时候，可以给当前变量赋值为null        
+        var a=null;
+        console.log(a,typeof a);
+        function fn(){
+            a=4;
+            
+        }
+
+        // 当函数需要参数，当不给函数传递参数的时候，可以传递一个null     
+        function fn1(a,b,c){
+            console.log(a,b,c)
+        }
+
+        // 4.当设置一个值是一个垃圾对象的时候，吧变量赋值为null       
+        var obj={
+            name:"xiaoming"
+        }
+        obj=null;
+    </script>
+</body>
+</html>

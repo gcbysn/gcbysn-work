@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            调用函数有两种可能
+                1.想要做一些操作
+                2.让函数做一些操作
+
+            return的作用
+                函数的返回值
+                立即退出函数
+
+        */
+        //不需要返回值，只需要函数求两个数之和
+        function add(a, b) {
+            var sum = a + b;
+            console.log(sum)
+        }
+        add(2, 3);
+
+        //需要返回值时，使用一个变量来接收函数返回值
+        function fn(a, b) {
+            var sum = a + b;
+            //return 就是专门用来函数的返回值
+            return sum;
+        }
+        var num = fn(3, 4);
+        
+        //立即退出函数
+        function fn1(){
+            console.log(1);
+            return 1;//返回值并退出函数，不再继续执行后面的代码
+            console.log(2);//这时这一行代码不会执行，因为在执行41行时退出了函数，不会进行执行后面的代码
+        }
+        fn1();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        //属性的简写
+        let p={
+            name:name,
+            age:age,
+            sex:sex
+        }
+        //简写成
+        let p1={
+            name,
+            age,
+            sex
+        }
+        //方法的简写
+        let p2={
+            name,
+            age,
+            sex,
+            do:function(){
+                console.log(1);
+            }
+        }
+        //简写成
+        let p3={
+            name,
+            age,
+            sex,
+            do(){
+                console.log(1);
+            }
+        }
+        //对象的拓展运算符
+        let {a,b,...c}={
+            a:1,
+            b:2,
+            c:3,
+            e:4,
+            g:5
+        }
+    </script>
+</body>
+</html>

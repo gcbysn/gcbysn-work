@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            字符串转数组
+                split("")
+                    参数就是以字符串的哪个字符进行切割，如果不传参，则这个字符串就是数组的一个元素
+                    如果传入空字符串，则每一个字符串都是单独的一个元素
+                    可以指定一个字符进行切割
+        */
+       var str="123456";
+       var re=str.split("");
+       var re=str.split("3");
+       console.log(re);
+
+       //翻转字符串
+       var str="asdfghjkl";
+       //先将字符串转为数组，然后反转数组，最后将数组转换成字符串
+       var re=str.split("").reverse().join("");
+       console.log(re);
+    </script>
+</body>
+</html>

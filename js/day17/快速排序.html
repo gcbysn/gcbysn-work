@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         var arr=[1,2,9,46,5,8,88,32,34,35,6,4,68,69];
+         function quickSort(arr){
+             //如果调用quickSort的参数长度是1 则直接返回 不再递归
+             if(arr.length<=1){
+                 return arr;
+             }
+             //首先选择一个基准值，但是千万要把这个基准值从原数组中删除
+             var center=arr.pop();//拿出基准值
+             //定义左侧数组和右侧数组
+             var left=[];
+             var right=[];
+
+             //循环比较每一个值 然后存放数组
+             arr.forEach(function(item){
+                if(item<center){
+                    left.push(item);
+                }else{
+                    right.push(item);
+                }
+             })
+             console.log(left,center,right);
+
+             //合并左右中数组，然后合并的时候需要吧left和right的数组进行递归重新排序
+             var newArr=quickSort(left).concat(center,quickSort(right));
+             console.log(newArr);
+            
+             return newArr;
+        }
+        var re=quickSort(arr);
+        console.log(re);
+    </script>
+</body>
+</html>

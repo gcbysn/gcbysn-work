@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+        location对象
+            location对象存储了与当前文档位置(URL)相关的信息,简单地说就是网页地址字符串,使用 window对象的loaction属性可以访问
+            location对象定义了8个属性,其中7个属性可以获取当前URL的各部分信息,另一个属性(href)包含了完整的URL信息
+
+            href : 声明或获取当前文档完整的URL
+            protocol:协议部分包括后缀的冒号。例如http:
+            host:主机和端口名称 www.baidu.com:8080
+            hostname:主机名称
+            port：端口号
+            pathname 路径部分
+            search：url的查询部分，包括前导问号
+            hash：锚部分包括前导
+
+
+            reload():刷新
+            assign()：和href一样 设置路径
+            replace()：替换url  历史记录也替换了
+            
+        */
+
+        document.onclick = function () {
+            // console.log(location.href);
+            //常用的js跳转方式
+            // location.href = "http://www.baidu.com";
+
+            /* console.log(location.protocol);
+            console.log(location.host);
+            console.log(location.port);
+            console.log(location.hostname);
+            console.log(location.pathname);
+            console.log(location.search);
+            console.log(location.hash); */
+
+
+            // location.reload();
+            // location.assign("http://www.baidu.com");
+            location.replace("http://www.baidu.com")
+        }
+    </script>
+</body>
+
+</html>

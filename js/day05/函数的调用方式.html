@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            函数调用
+                直接调用
+        
+        */
+       function fn(){
+           alert('1')
+       }
+
+       //直接调用
+       fn();
+
+       var iphone={
+           //这个是属性
+           color:"red",
+           pai:"xiaomi",
+           //这个是方法
+           call:function(){
+               console.log("打电话")
+               console.log("发短信")
+           }
+       }
+
+       //对象的方法调用
+       iphone.call()
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn1">红色</button>
+    <button id="btn2">蓝色</button>
+    <button id="btn3">绿色</button>
+    <button id="btn4">粉色</button>
+    <script>
+        //获取元素
+        var oBtn1 = document.getElementById('btn1')
+        var oBtn2 = document.getElementById('btn2')
+        var oBtn3 = document.getElementById('btn3')
+        var oBtn4 = document.getElementById('btn4')
+        /* 
+        将点击按钮，改变body颜色封装在函数中
+            node:是指需要绑定点击事件的按钮
+            color:点击后需要改变的颜色
+
+        */
+        function obj(node,color){
+            node.onclick=function(){
+                document.body.style.background = color
+            }
+        }
+        //调用函数
+        obj(oBtn1,"red");
+        obj(oBtn2,"blue");
+        obj(oBtn3,"green");
+        obj(oBtn4,"hotpink");
+    </script>
+</body>
+</html>
